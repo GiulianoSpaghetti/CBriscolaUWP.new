@@ -130,10 +130,11 @@
     <value>coppe</value>
   </data>
   <data name="denari" xml:space="preserve">
-    <value>debaru</value>
+    <value>deb</value>
   </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>Hai perso</value>
+    <comment>s</comment>
   </data>
   <data name="HaiVInto" xml:space="preserve">
     <value>Hai vinto</value>

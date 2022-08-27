@@ -118,66 +118,66 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Applicazione" xml:space="preserve">
-    <value>Applicazione</value>
+    <value>Inscrição</value>
   </data>
   <data name="bastoni" xml:space="preserve">
-    <value>bastoni</value>
+    <value>gravetos</value>
   </data>
   <data name="carte" xml:space="preserve">
-    <value>cart</value>
+    <value>cartas</value>
   </data>
   <data name="coppe" xml:space="preserve">
-    <value>coppe</value>
+    <value>xícaras</value>
   </data>
   <data name="denari" xml:space="preserve">
-    <value>debaru</value>
+    <value>dinheiro</value>
   </data>
   <data name="HaiPerso" xml:space="preserve">
-    <value>Hai perso</value>
+    <value>Oi pessoal</value>
   </data>
   <data name="HaiVInto" xml:space="preserve">
-    <value>Hai vinto</value>
+    <value>Você ganhou</value>
   </data>
   <data name="Informazioni" xml:space="preserve">
-    <value>Informazioni</value>
+    <value>em formação</value>
   </data>
   <data name="NelMazzoRimangono" xml:space="preserve">
-    <value>Nel mazzo rimangono</value>
+    <value>Restam no baralho</value>
   </data>
   <data name="NomeCpu" xml:space="preserve">
-    <value>Nome del computer</value>
+    <value>Nome do computador</value>
   </data>
   <data name="NomeUtente" xml:space="preserve">
-    <value>Nome dell'utente</value>
+    <value>nome do usuário</value>
   </data>
   <data name="Opzioni" xml:space="preserve">
-    <value>Opzioni</value>
+    <value>Opções</value>
   </data>
-  <data name="PartitaFInita" xml:space="preserve">
-    <value>La partita è finita</value>
+  <data name="PartitaFinita" xml:space="preserve">
+    <value>A partida acabou</value>
   </data>
   <data name="PartitaPatta" xml:space="preserve">
-    <value>La partita è patta</value>
+    <value>O jogo está empatado</value>
   </data>
   <data name="per" xml:space="preserve">
-    <value>per</value>
+    <value>por</value>
   </data>
   <data name="punti" xml:space="preserve">
-    <value>punti</value>
+    <value>pontos</value>
   </data>
   <data name="PuntiDi" xml:space="preserve">
-    <value>Punti di</value>
+    <value>Pontos de</value>
   </data>
   <data name="SecondaPartita" xml:space="preserve">
-    <value>Vuoi giocare ancora?</value>
+    <value>Você quer jogar de novo?</value>
   </data>
   <data name="Secondi" xml:space="preserve">
-    <value>Secondi</value>
+    <value>Segundos</value>
   </data>
   <data name="SemeBriscola" xml:space="preserve">
-    <value>Il seme di briscola è</value>
+    <value>O naipe de trunfo é</value>
   </data>
   <data name="spade" xml:space="preserve">
-    <value>spade</value>
+    <value>espadas</value>
   </data>
 </root>
