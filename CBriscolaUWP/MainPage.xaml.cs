@@ -34,10 +34,12 @@ namespace CBriscolaUWP
         private static BitmapImage cartaCpu = new BitmapImage(new Uri("ms-appx:///Resources/retro carte pc.png"));
         private static Image i, i1;
         private static UInt16 secondi = 5;
+        private static TimeSpan delay;
         elaboratoreCarteBriscola e;
         public MainPage()
         {
             this.InitializeComponent();
+            delay = TimeSpan.FromSeconds(secondi);
             e = new elaboratoreCarteBriscola();
             m = new mazzo(e);
             carta.inizializza(40, cartaHelperBriscola.getIstanza(e));
@@ -124,6 +126,7 @@ namespace CBriscolaUWP
             FinePartita.Visibility = Visibility.Collapsed;
             e = new elaboratoreCarteBriscola();
             m = new mazzo(e);
+            briscola = carta.getCarta(elaboratoreCarteBriscola.getCartaBriscola());
             g = new giocatore(new giocatoreHelperUtente(), g.getNome(), 3);
             cpu = new giocatore(new giocatoreHelperCpu(elaboratoreCarteBriscola.getCartaBriscola()), cpu.getNome(), 3);
             for (UInt16 i = 0; i < 3; i++)
@@ -156,13 +159,13 @@ namespace CBriscolaUWP
             Briscola.Visibility = Visibility.Visible;
             primo = g;
             secondo = cpu;
+            Briscola.Source = briscola.getImmagine();
             Applicazione.Visibility = Visibility.Visible;
         }
         private void OnCancelFp_Click(object sender, TappedRoutedEventArgs e)
         {
             Application.Current.Exit();
         }
-
         private Image giocaCpu()
         {
             UInt16 quale = 0;
@@ -201,7 +204,6 @@ namespace CBriscolaUWP
             i = giocaUtente(img);
             if (secondo == cpu)
                 i1 = giocaCpu();
-            TimeSpan delay = TimeSpan.FromSeconds(secondi);
             ThreadPoolTimer t = ThreadPoolTimer.CreateTimer((source) =>
             {
 
@@ -279,6 +281,7 @@ namespace CBriscolaUWP
             g.setNome(txtNomeUtente.Text);
             cpu.setNome(txtCpu.Text);
             secondi = UInt16.Parse(txtSecondi.Text);
+            delay = TimeSpan.FromSeconds(secondi);
             NomeUtente.Text = g.getNome();
             NomeCpu.Text = cpu.getNome();
             GOpzioni.Visibility = Visibility.Collapsed;

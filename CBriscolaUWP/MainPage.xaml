@@ -53,7 +53,7 @@
             <TextBlock Text="CBriscola versione 0.3" Grid.Row="0" />
             <TextBlock Text="Autore: Giulio Sorrentino" Grid.Row="1" />
             <TextBlock Text="Licenza: GPL v3 o, secondo la tua opionione, qualsiasi versione successiva" Grid.Row="2"/>
-            <TextBlock Text="Special Thanks to: Francesca e Giovanna, le beta tester della mia vita" Grid.Row="3" />
+            <TextBlock Text="https://github.com/numerunix/CBriscolaUWP" Grid.Row="3" />
             <TextBlock x:Name="InfoApplicazione" Text="Applicazione" Tapped="OnApp_Click" Grid.Row="4"/>
         </Grid>
         <Grid x:Name="GOpzioni" Visibility="Collapsed">
