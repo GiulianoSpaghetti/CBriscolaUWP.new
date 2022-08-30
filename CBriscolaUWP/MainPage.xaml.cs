@@ -63,10 +63,10 @@ namespace CBriscolaUWP
             Cpu0.Source = cartaCpu;
             Cpu1.Source = cartaCpu;
             Cpu2.Source = cartaCpu;
-            PuntiCpu.Text = App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString + " " + cpu.getNome() + ": " + cpu.getPunteggio();
-            PuntiUtente.Text = App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString + " " + g.getNome() + ": " + g.getPunteggio();
-            NelMazzoRimangono.Text = App.resourceMap.GetValue("NelMazzoRimangono", App.resourceContext).ValueAsString + " " + m.getNumeroCarte() + " " + App.resourceMap.GetValue("carte", App.resourceContext).ValueAsString;
-            CartaBriscola.Text = App.resourceMap.GetValue("SemeBriscola", App.resourceContext).ValueAsString + ": " + briscola.getSemeStr();
+            PuntiCpu.Text = $"{App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString}  {cpu.getNome()}: {cpu.getPunteggio()}";
+            PuntiUtente.Text = $"{App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString}  {g.getNome()}: {g.getPunteggio()}";
+            NelMazzoRimangono.Text = $"{App.resourceMap.GetValue("NelMazzoRimangono", App.resourceContext).ValueAsString} {m.getNumeroCarte()} {App.resourceMap.GetValue("carte", App.resourceContext).ValueAsString}";
+            CartaBriscola.Text = $"{App.resourceMap.GetValue("SemeBriscola", App.resourceContext).ValueAsString}: {briscola.getSemeStr()}";
             opNomeUtente.Text = App.resourceMap.GetValue("NomeUtente", App.resourceContext).ValueAsString;
             opNomeCpu.Text = App.resourceMap.GetValue("NomeCpu", App.resourceContext).ValueAsString;
             Secondi.Text = App.resourceMap.GetValue("Secondi", App.resourceContext).ValueAsString;
@@ -149,11 +149,11 @@ namespace CBriscolaUWP
             Cpu2.Visibility = Visibility.Visible;
             Giocata0.Visibility = Visibility.Collapsed;
             Giocata1.Visibility = Visibility.Collapsed;
-            PuntiCpu.Text = App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString + " " + cpu.getNome() + ": " + cpu.getPunteggio();
-            PuntiUtente.Text = App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString + " " + g.getNome() + ": " + g.getPunteggio();
-            NelMazzoRimangono.Text = App.resourceMap.GetValue("NelMazzoRimangono", App.resourceContext).ValueAsString + " " + m.getNumeroCarte() + " " + App.resourceMap.GetValue("carte", App.resourceContext).ValueAsString;
+            PuntiCpu.Text = $"{App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString}  {cpu.getNome()}: {cpu.getPunteggio()}";
+            PuntiUtente.Text = $"{App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString}  {g.getNome()}: {g.getPunteggio()}";
+            NelMazzoRimangono.Text = $"{App.resourceMap.GetValue("NelMazzoRimangono", App.resourceContext).ValueAsString} {m.getNumeroCarte()} {App.resourceMap.GetValue("carte", App.resourceContext).ValueAsString}";
             NelMazzoRimangono.Visibility = Visibility.Visible;
-            CartaBriscola.Text = App.resourceMap.GetValue("SemeBriscola", App.resourceContext).ValueAsString + ": " + briscola.getSemeStr();
+            CartaBriscola.Text = $"{App.resourceMap.GetValue("SemeBriscola", App.resourceContext).ValueAsString}: {briscola.getSemeStr()}";
             CartaBriscola.Visibility = Visibility.Visible;
             Briscola.Source = briscola.getImmagine();
             Briscola.Visibility = Visibility.Visible;
@@ -220,12 +220,12 @@ namespace CBriscolaUWP
                     }
 
                     primo.aggiornaPunteggio(secondo);
-                    PuntiCpu.Text = App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString + " " + cpu.getNome() + ": " + cpu.getPunteggio();
-                    PuntiUtente.Text = App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString + " " + g.getNome() + ": " + g.getPunteggio();
+                    PuntiCpu.Text = $"{App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString}  {cpu.getNome()}: {cpu.getPunteggio()}";
+                    PuntiUtente.Text = $"{App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString}  {g.getNome()}: {g.getPunteggio()}";
                     if (aggiungiCarte())
                     {
-                        NelMazzoRimangono.Text = App.resourceMap.GetValue("NelMazzoRimangono", App.resourceContext).ValueAsString + " " + m.getNumeroCarte() + " " + App.resourceMap.GetValue("carte", App.resourceContext).ValueAsString;
-                        CartaBriscola.Text = App.resourceMap.GetValue("SemeBriscola", App.resourceContext).ValueAsString + ": " + briscola.getSemeStr();
+                        NelMazzoRimangono.Text = $"{App.resourceMap.GetValue("NelMazzoRimangono", App.resourceContext).ValueAsString} {m.getNumeroCarte()} {App.resourceMap.GetValue("carte", App.resourceContext).ValueAsString}";
+                        CartaBriscola.Text = $"{App.resourceMap.GetValue("SemeBriscola", App.resourceContext).ValueAsString}: {briscola.getSemeStr()}";
                         if (Briscola.Visibility == Visibility.Visible && m.getNumeroCarte() == 0)
                         {
                             NelMazzoRimangono.Visibility = Visibility.Collapsed;
@@ -267,9 +267,9 @@ namespace CBriscolaUWP
                                 s = App.resourceMap.GetValue("HaiVinto", App.resourceContext).ValueAsString;
                             else
                                 s = App.resourceMap.GetValue("HaiPerso", App.resourceContext).ValueAsString;
-                            s = s + " " + App.resourceMap.GetValue("per", App.resourceContext).ValueAsString + " " + Math.Abs(g.getPunteggio() - cpu.getPunteggio()) + " " + App.resourceMap.GetValue("punti", App.resourceContext).ValueAsString;
+                            s = $"{s} {App.resourceMap.GetValue("per", App.resourceContext).ValueAsString} {Math.Abs(g.getPunteggio() - cpu.getPunteggio())}  {App.resourceMap.GetValue("punti", App.resourceContext).ValueAsString}";
                         }
-                        fpRisultrato.Text = App.resourceMap.GetValue("PartitaFinita", App.resourceContext).ValueAsString + ". " + s + " " + App.resourceMap.GetValue("SecondaPartita", App.resourceContext).ValueAsString;
+                        fpRisultrato.Text = $"{App.resourceMap.GetValue("PartitaFinita", App.resourceContext).ValueAsString}. {s} {App.resourceMap.GetValue("SecondaPartita", App.resourceContext).ValueAsString}";
                         Applicazione.Visibility = Visibility.Collapsed;
                         FinePartita.Visibility = Visibility.Visible;
                     }

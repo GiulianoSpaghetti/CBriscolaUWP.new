@@ -9,7 +9,7 @@
   <Identity
     Name="21961GiulioSorrentino.CBriscola"
     Publisher="CN=943AD59F-3DA9-4CFA-998C-F0F7FC0A251B"
-    Version="0.3.17.0" />
+    Version="0.3.18.0" />
 
   <mp:PhoneIdentity PhoneProductId="96a1003a-b5f2-4e5f-835c-deec535dafdb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
