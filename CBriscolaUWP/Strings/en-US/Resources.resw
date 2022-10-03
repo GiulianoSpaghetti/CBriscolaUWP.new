@@ -120,8 +120,14 @@
   <data name="Applicazione" xml:space="preserve">
     <value>Application</value>
   </data>
+  <data name="AvvisaTallone" xml:space="preserve">
+    <value>Warn if deck ends</value>
+  </data>
   <data name="bastoni" xml:space="preserve">
     <value>sticks</value>
+  </data>
+  <data name="CartaBriscolaDaPunti" xml:space="preserve">
+    <value>The trump card can give you points</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>card</value>
@@ -132,14 +138,32 @@
   <data name="denari" xml:space="preserve">
     <value>denarii</value>
   </data>
+  <data name="di" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="diBriscola" xml:space="preserve">
+    <value>of trump</value>
+  </data>
+  <data name="GiocataBriscola" xml:space="preserve">
+    <value>Trump has been played</value>
+  </data>
+  <data name="GiocataCartaDiValore" xml:space="preserve">
+    <value>Valuable Card Played</value>
+  </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>You loose</value>
   </data>
   <data name="HaiVInto" xml:space="preserve">
     <value>You won</value>
   </data>
+  <data name="IlTalloneEFinito" xml:space="preserve">
+    <value>The deck has ended</value>
+  </data>
   <data name="Informazioni" xml:space="preserve">
     <value>Informations</value>
+  </data>
+  <data name="LaCpuHaGiocatoIl" xml:space="preserve">
+    <value>The computer played</value>
   </data>
   <data name="NelMazzoRimangono" xml:space="preserve">
     <value>In the deck remains</value>
@@ -179,5 +203,11 @@
   </data>
   <data name="spade" xml:space="preserve">
     <value>swords</value>
+  </data>
+  <data name="TalloneFinito" xml:space="preserve">
+    <value>Deck ended</value>
+  </data>
+  <data name="ValoreNonValido" xml:space="preserve">
+    <value>Invalid Value</value>
   </data>
 </root>

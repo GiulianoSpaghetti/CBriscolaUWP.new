@@ -53,7 +53,7 @@
             <TextBlock Text="CBriscola versione 0.3" Grid.Row="0" />
             <TextBlock Text="Autore: Giulio Sorrentino" Grid.Row="1" />
             <TextBlock Text="Licenza: GPL v3 o, secondo la tua opionione, qualsiasi versione successiva" Grid.Row="2"/>
-            <TextBlock Text="https://github.com/numerunix/CBriscolaUWP" Grid.Row="3" />
+            <TextBlock Text="https://github.com/numerunix/CBriscolaUWP" Tapped="OnSito_Click" Grid.Row="3" />
             <TextBlock x:Name="InfoApplicazione" Text="Applicazione" Tapped="OnApp_Click" Grid.Row="4"/>
         </Grid>
         <Grid x:Name="GOpzioni" Visibility="Collapsed">
@@ -67,6 +67,8 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <TextBlock x:Name="opNomeUtente" Grid.Row="0" Grid.Column="0"/>
             <TextBox x:Name="txtNomeUtente" Grid.Row="0" Grid.Column="1" />
@@ -74,9 +76,11 @@
             <TextBox x:Name="txtCpu" Grid.Row="1" Grid.Column="1" />
             <TextBox x:Name="txtSecondi" Grid.Row="2" Grid.Column="1" />
             <TextBlock x:Name="Secondi" Grid.Row="2" Grid.Column="0" />
-            <Button Content="OK" Tapped="OnOk_Click"  Grid.Row="3" Grid.Column="1"/>
-            <TextBlock x:Name="OpzioniApplicazione" Text="Applicazione" Tapped="OnApp_Click" Grid.Row="4" Grid.Column="0"/>
-            <TextBlock x:Name="OpzioniInformazioni" Text="Informazioni" Grid.Row="4" Grid.Column="1" Tapped="OnInfo_Click" />
+            <CheckBox x:Name="cbCartaBriscola" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsChecked="True" />
+            <CheckBox x:Name="cbAvvisaTallone" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" IsChecked="True" />
+            <Button Content="OK" Tapped="OnOk_Click"  Grid.Row="4" Grid.Column="1"/>
+            <TextBlock x:Name="OpzioniApplicazione" Text="Applicazione" Tapped="OnApp_Click" Grid.Row="5" Grid.Column="0"/>
+            <TextBlock x:Name="OpzioniInformazioni" Text="Informazioni" Grid.Row="5" Grid.Column="1" Tapped="OnInfo_Click" />
         </Grid>
         <Grid x:Name="FinePartita" Visibility="Collapsed">
             <Grid.RowDefinitions>
@@ -86,10 +90,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="fpRisultrato" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+            <TextBlock x:Name="fpRisultrato" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
             <Button Content="Ok" Tapped="OnOkFp_Click" Grid.Row="1" Grid.Column="0"/>
-            <Button Content="Cancel" Tapped="OnCancelFp_Click" Grid.Row="1" Grid.Column="1"/>
+            <Button Content="Cancel" Tapped="OnCancelFp_Click" Grid.Row="1" Grid.Column="1" />
+            <Button Content="Share" Tapped="OnFPShare_Click" Grid.Row="1" Grid.Column="2" />
         </Grid>
     </Grid>
 

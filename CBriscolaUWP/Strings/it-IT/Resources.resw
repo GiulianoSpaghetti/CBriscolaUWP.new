@@ -120,8 +120,14 @@
   <data name="Applicazione" xml:space="preserve">
     <value>Applicazione</value>
   </data>
+  <data name="AvvisaTallone" xml:space="preserve">
+    <value>Avvisa se il tallone finisce</value>
+  </data>
   <data name="bastoni" xml:space="preserve">
     <value>bastoni</value>
+  </data>
+  <data name="CartaBriscolaDaPunti" xml:space="preserve">
+    <value>La carta di briscola può dar punti</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>carte</value>
@@ -132,6 +138,18 @@
   <data name="denari" xml:space="preserve">
     <value>deb</value>
   </data>
+  <data name="di" xml:space="preserve">
+    <value>di</value>
+  </data>
+  <data name="diBriscola" xml:space="preserve">
+    <value>di Briscola</value>
+  </data>
+  <data name="GiocataBriscola" xml:space="preserve">
+    <value>Giocata Briscola</value>
+  </data>
+  <data name="GiocataCartaDiValore" xml:space="preserve">
+    <value>Giocata carta di valore</value>
+  </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>Hai perso</value>
     <comment>s</comment>
@@ -139,8 +157,14 @@
   <data name="HaiVInto" xml:space="preserve">
     <value>Hai vinto</value>
   </data>
+  <data name="IlTalloneEFinito" xml:space="preserve">
+    <value>Il tallone è finito</value>
+  </data>
   <data name="Informazioni" xml:space="preserve">
     <value>Informazioni</value>
+  </data>
+  <data name="LaCpuHaGiocatoIl" xml:space="preserve">
+    <value>La CPU ha giocato il</value>
   </data>
   <data name="NelMazzoRimangono" xml:space="preserve">
     <value>Nel mazzo rimangono</value>
@@ -180,5 +204,11 @@
   </data>
   <data name="spade" xml:space="preserve">
     <value>spade</value>
+  </data>
+  <data name="TalloneFinito" xml:space="preserve">
+    <value>Tallone Finito</value>
+  </data>
+  <data name="ValoreNonValido" xml:space="preserve">
+    <value>Valore non valido</value>
   </data>
 </root>

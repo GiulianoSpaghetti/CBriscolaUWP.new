@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="21961GiulioSorrentino.CBriscola"
+    Name="21961GiulioSorrentino.315940154655C"
     Publisher="CN=943AD59F-3DA9-4CFA-998C-F0F7FC0A251B"
-    Version="0.3.18.0" />
+    Version="0.4.2.0" />
 
-  <mp:PhoneIdentity PhoneProductId="96a1003a-b5f2-4e5f-835c-deec535dafdb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="b23d6106-0aee-4880-a316-2cc45cad4663" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>CBriscola</DisplayName>

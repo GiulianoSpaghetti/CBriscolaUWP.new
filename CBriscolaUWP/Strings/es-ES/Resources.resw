@@ -120,8 +120,14 @@
   <data name="Applicazione" xml:space="preserve">
     <value>Solicitud</value>
   </data>
+  <data name="AvvisaTallone" xml:space="preserve">
+    <value>Avisar si se acaba la baraja</value>
+  </data>
   <data name="bastoni" xml:space="preserve">
     <value>palos</value>
+  </data>
+  <data name="CartaBriscolaDaPunti" xml:space="preserve">
+    <value>La carta de triunfo puede darte puntos.</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>tarjetas</value>
@@ -132,14 +138,29 @@
   <data name="denari" xml:space="preserve">
     <value>dinero</value>
   </data>
+  <data name="di" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="diBriscola" xml:space="preserve">
+    <value>de trunfo</value>
+  </data>
+  <data name="GiocataBriscola" xml:space="preserve">
+    <value>Jugó triunfo</value>
+  </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>Perdiste</value>
   </data>
   <data name="HaiVinto" xml:space="preserve">
     <value>Ganaste</value>
   </data>
+  <data name="IlTalloneEFinito" xml:space="preserve">
+    <value>La baraja está terminada</value>
+  </data>
   <data name="Informazioni" xml:space="preserve">
     <value>Información</value>
+  </data>
+  <data name="LaCpuHaGiocatoIl" xml:space="preserve">
+    <value>La CPU jugó el</value>
   </data>
   <data name="NelMazzoRimangono" xml:space="preserve">
     <value>Se quedan en la cubierta</value>
@@ -181,5 +202,11 @@ El juego esta dibujado</value>
   </data>
   <data name="spade" xml:space="preserve">
     <value>espadas</value>
+  </data>
+  <data name="TalloneFinito" xml:space="preserve">
+    <value>Baraja terminada</value>
+  </data>
+  <data name="ValoreNonValido" xml:space="preserve">
+    <value>valor no válido</value>
   </data>
 </root>

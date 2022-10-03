@@ -120,8 +120,14 @@
   <data name="Applicazione" xml:space="preserve">
     <value>Application</value>
   </data>
+  <data name="AvvisaTallone" xml:space="preserve">
+    <value>Avertir si le deck est épuisé</value>
+  </data>
   <data name="bastoni" xml:space="preserve">
     <value>bâtons</value>
+  </data>
+  <data name="CartaBriscolaDaPunti" xml:space="preserve">
+    <value>L'atout peut vous donner des points</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>cartes</value>
@@ -132,14 +138,32 @@
   <data name="denari" xml:space="preserve">
     <value>argent</value>
   </data>
+  <data name="di" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="diBriscola" xml:space="preserve">
+    <value>d'atout</value>
+  </data>
+  <data name="GiocataBriscola" xml:space="preserve">
+    <value>A joué l'atout</value>
+  </data>
+  <data name="GiocataCartaDiValore" xml:space="preserve">
+    <value>Carte de valeur jouée</value>
+  </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>Tu as perdu</value>
   </data>
   <data name="HaiVinto" xml:space="preserve">
     <value>Tu as gagné</value>
   </data>
+  <data name="IlTalloneEFinito" xml:space="preserve">
+    <value>Le plateau est terminé</value>
+  </data>
   <data name="Informazioni" xml:space="preserve">
     <value>Informations</value>
+  </data>
+  <data name="LaCpuHaGiocatoIl" xml:space="preserve">
+    <value>Le processeur a joué le</value>
   </data>
   <data name="NelMazzoRimangono" xml:space="preserve">
     <value>Ils restent dans le pont</value>
@@ -179,5 +203,11 @@
   </data>
   <data name="spade" xml:space="preserve">
     <value>épées</value>
+  </data>
+  <data name="TalloneFinito" xml:space="preserve">
+    <value>Plateau fini</value>
+  </data>
+  <data name="ValoreNonValido" xml:space="preserve">
+    <value>Valeur invalide</value>
   </data>
 </root>

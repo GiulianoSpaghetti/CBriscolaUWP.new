@@ -120,8 +120,14 @@
   <data name="Applicazione" xml:space="preserve">
     <value>Anwendung</value>
   </data>
+  <data name="AvvisaTallone" xml:space="preserve">
+    <value>Warnen, wenn Deck ausgeht</value>
+  </data>
   <data name="bastoni" xml:space="preserve">
     <value>stöcke</value>
+  </data>
+  <data name="CartaBriscolaDaPunti" xml:space="preserve">
+    <value>Die Trumpfkarte kann Ihnen Punkte bringen</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>karten</value>
@@ -132,14 +138,32 @@
   <data name="denari" xml:space="preserve">
     <value>geld</value>
   </data>
+  <data name="di" xml:space="preserve">
+    <value>der</value>
+  </data>
+  <data name="diBriscola" xml:space="preserve">
+    <value>von Trumpf</value>
+  </data>
+  <data name="GiocataBriscola" xml:space="preserve">
+    <value>Trumpf gespielt</value>
+  </data>
+  <data name="GiocataCartaDiValore" xml:space="preserve">
+    <value>Wertvolle Karte gespielt</value>
+  </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>Du hast verloren</value>
   </data>
   <data name="HaiVinto" xml:space="preserve">
     <value>Du hast gewonnen</value>
   </data>
+  <data name="IlTalloneEFinito" xml:space="preserve">
+    <value>Das Deck ist fertig</value>
+  </data>
   <data name="Informazioni" xml:space="preserve">
     <value>Information</value>
+  </data>
+  <data name="LaCpuHaGiocatoIl" xml:space="preserve">
+    <value>CPU gespielt</value>
   </data>
   <data name="NelMazzoRimangono" xml:space="preserve">
     <value>Sie bleiben im Deck</value>
@@ -179,5 +203,11 @@
   </data>
   <data name="spade" xml:space="preserve">
     <value>schwerter</value>
+  </data>
+  <data name="TalloneFinito" xml:space="preserve">
+    <value>Fertiges Deck</value>
+  </data>
+  <data name="ValoreNonValido" xml:space="preserve">
+    <value>Ungültiger Wert</value>
   </data>
 </root>

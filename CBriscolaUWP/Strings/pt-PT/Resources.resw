@@ -120,17 +120,35 @@
   <data name="Applicazione" xml:space="preserve">
     <value>Inscrição</value>
   </data>
+  <data name="AvvisaTallone" xml:space="preserve">
+    <value>Avisar se o deck acabar</value>
+  </data>
   <data name="bastoni" xml:space="preserve">
     <value>gravetos</value>
+  </data>
+  <data name="CartaBriscolaDaPunti" xml:space="preserve">
+    <value>O trunfo pode lhe dar pontos</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>cartas</value>
   </data>
   <data name="coppe" xml:space="preserve">
-    <value>xícaras</value>
+    <value>copas</value>
   </data>
   <data name="denari" xml:space="preserve">
     <value>dinheiro</value>
+  </data>
+  <data name="di" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="diBriscola" xml:space="preserve">
+    <value>de trunfo</value>
+  </data>
+  <data name="GiocataBriscola" xml:space="preserve">
+    <value>Jogou trunfo</value>
+  </data>
+  <data name="GiocataCartaDiValore" xml:space="preserve">
+    <value>Cartão de valor jogado</value>
   </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>Oi pessoal</value>
@@ -138,8 +156,14 @@
   <data name="HaiVInto" xml:space="preserve">
     <value>Você ganhou</value>
   </data>
+  <data name="IlTalloneEFinito" xml:space="preserve">
+    <value>O baralho está finalizado</value>
+  </data>
   <data name="Informazioni" xml:space="preserve">
     <value>em formação</value>
+  </data>
+  <data name="LaCpuHaGiocatoIl" xml:space="preserve">
+    <value>A CPU jogou o</value>
   </data>
   <data name="NelMazzoRimangono" xml:space="preserve">
     <value>Restam no baralho</value>
@@ -179,5 +203,11 @@
   </data>
   <data name="spade" xml:space="preserve">
     <value>espadas</value>
+  </data>
+  <data name="TalloneFinito" xml:space="preserve">
+    <value>Baralho finalizado</value>
+  </data>
+  <data name="ValoreNonValido" xml:space="preserve">
+    <value>Valor inválido</value>
   </data>
 </root>

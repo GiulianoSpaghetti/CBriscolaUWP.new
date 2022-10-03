@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.System.Threading;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -24,23 +26,20 @@ namespace CBriscolaUWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private static giocatore g;
-        private static giocatore cpu;
-        private static giocatore primo;
-        private static giocatore secondo;
+        private static giocatore g, cpu, primo, secondo, temp;
         private static mazzo m;
         private static carta c, c1, briscola;
-        private static giocatore temp;
         private static BitmapImage cartaCpu = new BitmapImage(new Uri("ms-appx:///Resources/retro carte pc.png"));
         private static Image i, i1;
         private static UInt16 secondi = 5;
         private static TimeSpan delay;
+        private static bool avvisaTalloneFinito=true, briscolaDaPunti=false;
         elaboratoreCarteBriscola e;
         public MainPage()
         {
             this.InitializeComponent();
             delay = TimeSpan.FromSeconds(secondi);
-            e = new elaboratoreCarteBriscola();
+            e = new elaboratoreCarteBriscola(briscolaDaPunti);
             m = new mazzo(e);
             carta.inizializza(40, cartaHelperBriscola.getIstanza(e));
             g = new giocatore(new giocatoreHelperUtente(), "Giulio", 3);
@@ -67,6 +66,8 @@ namespace CBriscolaUWP
             PuntiUtente.Text = $"{App.resourceMap.GetValue("PuntiDi", App.resourceContext).ValueAsString}  {g.getNome()}: {g.getPunteggio()}";
             NelMazzoRimangono.Text = $"{App.resourceMap.GetValue("NelMazzoRimangono", App.resourceContext).ValueAsString} {m.getNumeroCarte()} {App.resourceMap.GetValue("carte", App.resourceContext).ValueAsString}";
             CartaBriscola.Text = $"{App.resourceMap.GetValue("SemeBriscola", App.resourceContext).ValueAsString}: {briscola.getSemeStr()}";
+            cbCartaBriscola.Content = App.resourceMap.GetValue("CartaBriscolaDaPunti", App.resourceContext).ValueAsString;
+            cbAvvisaTallone.Content = App.resourceMap.GetValue("AvvisaTallone", App.resourceContext).ValueAsString;
             opNomeUtente.Text = App.resourceMap.GetValue("NomeUtente", App.resourceContext).ValueAsString;
             opNomeCpu.Text = App.resourceMap.GetValue("NomeCpu", App.resourceContext).ValueAsString;
             Secondi.Text = App.resourceMap.GetValue("Secondi", App.resourceContext).ValueAsString;
@@ -119,12 +120,17 @@ namespace CBriscolaUWP
             txtNomeUtente.Text = g.getNome();
             txtCpu.Text = cpu.getNome();
             txtSecondi.Text = secondi.ToString();
+            cbCartaBriscola.IsChecked = briscolaDaPunti;
+            cbAvvisaTallone.IsChecked = avvisaTalloneFinito;
         }
 
         private void OnOkFp_Click(object sender, TappedRoutedEventArgs evt)
         {
+            bool cartaBriscola = true;
             FinePartita.Visibility = Visibility.Collapsed;
-            e = new elaboratoreCarteBriscola();
+            if (cbCartaBriscola.IsChecked == null || cbCartaBriscola.IsChecked == false)
+                cartaBriscola = false;
+            e = new elaboratoreCarteBriscola(cartaBriscola) ;
             m = new mazzo(e);
             briscola = carta.getCarta(elaboratoreCarteBriscola.getCartaBriscola());
             g = new giocatore(new giocatoreHelperUtente(), g.getNome(), 3);
@@ -226,6 +232,8 @@ namespace CBriscolaUWP
                     {
                         NelMazzoRimangono.Text = $"{App.resourceMap.GetValue("NelMazzoRimangono", App.resourceContext).ValueAsString} {m.getNumeroCarte()} {App.resourceMap.GetValue("carte", App.resourceContext).ValueAsString}";
                         CartaBriscola.Text = $"{App.resourceMap.GetValue("SemeBriscola", App.resourceContext).ValueAsString}: {briscola.getSemeStr()}";
+                        if (m.getNumeroCarte()==2 && avvisaTalloneFinito)
+                            new ToastContentBuilder().AddArgument(App.resourceMap.GetValue("TalloneFinito", App.resourceContext).ValueAsString).AddText(App.resourceMap.GetValue("IlTalloneEFinito", App.resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
                         if (Briscola.Visibility == Visibility.Visible && m.getNumeroCarte() == 0)
                         {
                             NelMazzoRimangono.Visibility = Visibility.Collapsed;
@@ -253,7 +261,11 @@ namespace CBriscolaUWP
                         if (primo == cpu)
                         {
                             i1 = giocaCpu();
-                        };
+                            if (cpu.getCartaGiocata().stessoSeme(briscola))
+                                new ToastContentBuilder().AddArgument(App.resourceMap.GetValue("GiocataBriscola", App.resourceContext).ValueAsString).AddText($"{App.resourceMap.GetValue("LaCpuHaGiocatoIl", App.resourceContext).ValueAsString} {cpu.getCartaGiocata().getValore() + 1} {App.resourceMap.GetValue("diBriscola", App.resourceContext).ValueAsString}").AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                            else if (cpu.getCartaGiocata().getPunteggio() > 0)
+                                new ToastContentBuilder().AddArgument(App.resourceMap.GetValue("GiocataCartaDiValore", App.resourceContext).ValueAsString).AddText($"{App.resourceMap.GetValue("LaCpuHaGiocatoIl", App.resourceContext).ValueAsString} {cpu.getCartaGiocata().getValore() + 1} {App.resourceMap.GetValue("di", App.resourceContext).ValueAsString} {cpu.getCartaGiocata().getSemeStr()}").AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                        }
 
                     }
                     else
@@ -280,12 +292,38 @@ namespace CBriscolaUWP
         {
             g.setNome(txtNomeUtente.Text);
             cpu.setNome(txtCpu.Text);
-            secondi = UInt16.Parse(txtSecondi.Text);
+            if (cbCartaBriscola.IsChecked==null || cbCartaBriscola.IsChecked==false)
+                briscolaDaPunti = false;
+            else
+                briscolaDaPunti = true;
+            if (cbAvvisaTallone.IsChecked==null || cbAvvisaTallone.IsChecked==false)
+                avvisaTalloneFinito = false;
+            else
+                avvisaTalloneFinito = true;
+            try
+            {
+                secondi = UInt16.Parse(txtSecondi.Text);
+            } catch (FormatException ex)
+            {
+                txtSecondi.Text = App.resourceMap.GetValue("ValoreNonValido", App.resourceContext).ValueAsString; ;
+                return;
+            }
             delay = TimeSpan.FromSeconds(secondi);
             NomeUtente.Text = g.getNome();
             NomeCpu.Text = cpu.getNome();
             GOpzioni.Visibility = Visibility.Collapsed;
             Applicazione.Visibility = Visibility.Visible;
+        }
+
+        private async void OnFPShare_Click(object sender, TappedRoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri($"https://twitter.com/intent/tweet?text=Con%20la%20CBriscola%20la%20partita%20{g.getNome()}%20contro%20{cpu.getNome()}%20%C3%A8%20finita%20{g.getPunteggio()}%20a%20{cpu.getPunteggio()}&url=https%3A%2F%2Fgithub.com%2Fnumerunix%2Fcbriscolauwp"));
+        }
+
+
+        private async void OnSito_Click(object sender, TappedRoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://github.com/numerunix/cbriscolauwp"));
         }
     }
 }

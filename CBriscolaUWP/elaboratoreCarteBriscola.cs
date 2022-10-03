@@ -43,6 +43,8 @@ namespace CBriscolaUWP
 					{
 						carta = (UInt16)(carta - valore + 1);
 					}
+					if (!briscolaDaPunti)
+						carta = cartaHelperBriscola.getIstanza(this).getNumero(cartaHelperBriscola.getIstanza(this).getSeme(carta), 1);
 					cartaBriscola = carta;
 					inizio = false;
 				}
