@@ -51,7 +51,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <TextBlock Text="CBriscola versione 0.3" Grid.Row="0" />
-            <TextBlock Text="Autore: Giulio Sorrentino" Grid.Row="1" />
+            <TextBlock Text="ⓒ 2023 Giulio Sorrentino" Grid.Row="1" />
             <TextBlock Text="Licenza: GPL v3 o, secondo la tua opionione, qualsiasi versione successiva" Grid.Row="2"/>
             <TextBlock Text="https://github.com/numerunix/CBriscolaUWP" Tapped="OnSito_Click" Grid.Row="3" />
             <TextBlock x:Name="InfoApplicazione" Text="Applicazione" Tapped="OnApp_Click" Grid.Row="4"/>
