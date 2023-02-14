@@ -42,10 +42,10 @@ namespace CBriscolaUWP {
 		public string getSemeStr(UInt16 carta) {
 			string s = "a";
 			switch (carta / 10) {
-				case 0: s = App.resourceMap.GetValue("bastoni", App.resourceContext).ValueAsString; break;
-                case 1: s = App.resourceMap.GetValue("coppe", App.resourceContext).ValueAsString; break;
-                case 2: s = App.resourceMap.GetValue("denari", App.resourceContext).ValueAsString; break;
-                case 3: s = App.resourceMap.GetValue("spade", App.resourceContext).ValueAsString; break;
+				case 0: s = MainPage.resourceMap.GetValue("bastoni", MainPage.resourceContext).ValueAsString; break;
+                case 1: s = MainPage.resourceMap.GetValue("coppe", MainPage.resourceContext).ValueAsString; break;
+                case 2: s = MainPage.resourceMap.GetValue("denari", MainPage.resourceContext).ValueAsString; break;
+                case 3: s = MainPage.resourceMap.GetValue("spade", MainPage.resourceContext).ValueAsString; break;
             }
             return s;
 		}

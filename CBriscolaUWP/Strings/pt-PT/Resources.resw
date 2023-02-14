@@ -132,6 +132,9 @@
   <data name="carte" xml:space="preserve">
     <value>cartas</value>
   </data>
+  <data name="Condividi" xml:space="preserve">
+    <value>Compartilhar</value>
+  </data>
   <data name="coppe" xml:space="preserve">
     <value>copas</value>
   </data>
@@ -159,14 +162,23 @@
   <data name="IlTalloneEFinito" xml:space="preserve">
     <value>O baralho está finalizado</value>
   </data>
+  <data name="InfoApp" xml:space="preserve">
+    <value>Simulador de jogo Briscola para dois jogadores, sem multiplayer</value>
+  </data>
   <data name="Informazioni" xml:space="preserve">
     <value>em formação</value>
   </data>
   <data name="LaCpuHaGiocatoIl" xml:space="preserve">
     <value>A CPU jogou o</value>
   </data>
+  <data name="MaggioriInfo" xml:space="preserve">
+    <value>Mais Informações</value>
+  </data>
   <data name="NelMazzoRimangono" xml:space="preserve">
     <value>Restam no baralho</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Não</value>
   </data>
   <data name="NomeCpu" xml:space="preserve">
     <value>Nome do computador</value>
@@ -189,8 +201,11 @@
   <data name="punti" xml:space="preserve">
     <value>pontos</value>
   </data>
-  <data name="PuntiDi" xml:space="preserve">
-    <value>Pontos de</value>
+  <data name="PuntiDiPrefisso" xml:space="preserve">
+    <value>Pontos de </value>
+  </data>
+  <data name="PuntiDiSuffisso" xml:space="preserve">
+    <value />
   </data>
   <data name="SecondaPartita" xml:space="preserve">
     <value>Você quer jogar de novo?</value>
@@ -200,6 +215,9 @@
   </data>
   <data name="SemeBriscola" xml:space="preserve">
     <value>O naipe de trunfo é</value>
+  </data>
+  <data name="Si" xml:space="preserve">
+    <value>Sim</value>
   </data>
   <data name="spade" xml:space="preserve">
     <value>espadas</value>

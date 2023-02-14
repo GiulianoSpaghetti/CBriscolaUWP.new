@@ -132,6 +132,9 @@
   <data name="carte" xml:space="preserve">
     <value>karten</value>
   </data>
+  <data name="Condividi" xml:space="preserve">
+    <value>Atkie</value>
+  </data>
   <data name="coppe" xml:space="preserve">
     <value>tassen</value>
   </data>
@@ -159,14 +162,23 @@
   <data name="IlTalloneEFinito" xml:space="preserve">
     <value>Das Deck ist fertig</value>
   </data>
+  <data name="InfoApp" xml:space="preserve">
+    <value>Briscola Spielsimulator für zwei Spieler, ohne Multiplayer</value>
+  </data>
   <data name="Informazioni" xml:space="preserve">
     <value>Information</value>
   </data>
   <data name="LaCpuHaGiocatoIl" xml:space="preserve">
     <value>CPU gespielt</value>
   </data>
+  <data name="MaggioriInfo" xml:space="preserve">
+    <value>Mehr Informationen</value>
+  </data>
   <data name="NelMazzoRimangono" xml:space="preserve">
     <value>Sie bleiben im Deck</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nein</value>
   </data>
   <data name="NomeCpu" xml:space="preserve">
     <value>CPU-Name</value>
@@ -175,7 +187,7 @@
     <value>Nome Utente</value>
   </data>
   <data name="Opzioni" xml:space="preserve">
-    <value>Nutzername</value>
+    <value>Optionen</value>
   </data>
   <data name="PartitaFInita" xml:space="preserve">
     <value>Das Spiel ist vorbei</value>
@@ -187,10 +199,13 @@
     <value>für</value>
   </data>
   <data name="punti" xml:space="preserve">
-    <value>punkte</value>
+    <value>puntke</value>
   </data>
-  <data name="PuntiDi" xml:space="preserve">
-    <value>Punti di</value>
+  <data name="PuntiDiPrefisso" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PuntiDiSuffisso" xml:space="preserve">
+    <value>-punkte</value>
   </data>
   <data name="SecondaPartita" xml:space="preserve">
     <value>Willst du wieder spielen?</value>
@@ -200,6 +215,9 @@
   </data>
   <data name="SemeBriscola" xml:space="preserve">
     <value>Der Trumpfanzug ist</value>
+  </data>
+  <data name="Si" xml:space="preserve">
+    <value>Ja</value>
   </data>
   <data name="spade" xml:space="preserve">
     <value>schwerter</value>
