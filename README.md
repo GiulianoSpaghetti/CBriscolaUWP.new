@@ -1,4 +1,4 @@
-# CBriscolaUWP.new
+# CBriscolaUWP per il windows store
 La cbriscola grafica in UWP, il falso vero Project Carmela
 
 # Come ottenere
