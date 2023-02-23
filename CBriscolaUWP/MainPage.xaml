@@ -7,8 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="Green">
-
-    <Grid>
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="CustomButtonStyle">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Page.Resources>
+    <Page.Content>
+            <Grid>
         <Grid x:Name="Applicazione">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -39,8 +44,8 @@
             <TextBlock x:Name="NelMazzoRimangono" Text="Nel Mazzo Rimangono" Grid.Row="2" Grid.Column="4" Foreground="White"/>
             <TextBlock x:Name="CartaBriscola" Text="Il seme di briscola è" Grid.Row="3" Grid.Column="4" Foreground="White"/>
             <Image x:Name="Briscola" Grid.Row="4" Grid.Column="4" />
-            <Button x:Name="AppInformazioni" Grid.Row="5" Grid.Column="0" Tapped="OnInfo_Click" />
-            <Button x:Name="AppOpzioni" Grid.Row="5" Grid.Column="1" Tapped="OnOpzioni_Click" />
+                <Button x:Name="AppInformazioni" Grid.Row="5" Grid.Column="0" Tapped="OnInfo_Click" Style="{ThemeResource CustomButtonStyle}" />
+                <Button x:Name="AppOpzioni" Grid.Row="5" Grid.Column="1" Tapped="OnOpzioni_Click"  Style="{ThemeResource CustomButtonStyle}" />
         </Grid>
         <Grid x:Name="Info" Visibility="Collapsed">
             <Grid.RowDefinitions>
@@ -51,12 +56,12 @@
                 <RowDefinition />
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Text="CBriscola versione 1.0" Grid.Row="0" Foreground="White"/>
-            <TextBlock Text="ⓒ 2023 Giulio Sorrentino" Grid.Row="1" Foreground="White"/>
+            <TextBlock Text="CBriscola versione 1.1" Grid.Row="0" Foreground="White"/>
+            <TextBlock Text="ⓒ 2023 Giulio Sorrentino some right reserved" Grid.Row="1" Foreground="White"/>
             <TextBlock Text="Licenza: GPL v3 o, secondo la tua opionione, qualsiasi versione successiva" Grid.Row="2" Foreground="White"/>
             <TextBlock x:Name="tbInfo" Text="Simulatore del gioco della briscola a due giocatori, senza multiplayer" Grid.Row="3" Foreground="White" />
-            <Button x:Name="btnInfo" Content="Maggiori Informazioni" Tapped="OnSito_Click" Grid.Row="4" />
-            <Button x:Name="InfoApplicazione" Tapped="OnApp_Click" Grid.Row="5"/>
+                <Button x:Name="btnInfo" Content="Maggiori Informazioni" Tapped="OnSito_Click" Grid.Row="4" Style="{ThemeResource CustomButtonStyle}" />
+                <Button x:Name="InfoApplicazione" Tapped="OnApp_Click" Grid.Row="5" Style="{ThemeResource CustomButtonStyle}" />
         </Grid>
         <Grid x:Name="GOpzioni" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
@@ -78,11 +83,11 @@
             <TextBox x:Name="txtCpu" Grid.Row="1" Grid.Column="1" Foreground="White"/>
             <TextBox x:Name="txtSecondi" Grid.Row="2" Grid.Column="1" Foreground="White"/>
             <TextBlock x:Name="Secondi" Grid.Row="2" Grid.Column="0" Foreground="White"/>
-            <CheckBox x:Name="cbCartaBriscola" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsChecked="True"  />
+                <CheckBox x:Name="cbCartaBriscola" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsChecked="True" />
             <CheckBox x:Name="cbAvvisaTallone" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" IsChecked="True" />
-            <Button Content="OK" Tapped="OnOk_Click"  Grid.Row="4" Grid.Column="1"/>
-            <Button x:Name="OpzioniApplicazione" Tapped="OnApp_Click" Grid.Row="5" Grid.Column="0"/>
-            <Button x:Name="OpzioniInformazioni" Grid.Row="5" Grid.Column="1" Tapped="OnInfo_Click" />
+                <Button Content="OK" Tapped="OnOk_Click"  Grid.Row="4" Grid.Column="1" Style="{ThemeResource CustomButtonStyle}"/>
+                <Button x:Name="OpzioniApplicazione" Tapped="OnApp_Click" Grid.Row="5" Grid.Column="0" Style="{ThemeResource CustomButtonStyle}"/>
+                <Button x:Name="OpzioniInformazioni" Grid.Row="5" Grid.Column="1" Tapped="OnInfo_Click"  Style="{ThemeResource CustomButtonStyle}"/>
         </Grid>
         <Grid x:Name="FinePartita" Visibility="Collapsed">
             <Grid.RowDefinitions>
@@ -95,10 +100,10 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="fpRisultrato" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Foreground="White"/>
-            <Button x:Name="btnOk" Tapped="OnOkFp_Click" Grid.Row="1" Grid.Column="0"/>
-            <Button x:Name="btnCancel" Tapped="OnCancelFp_Click" Grid.Row="1" Grid.Column="1" />
-            <Button x:Name="btnShare" Tapped="OnFPShare_Click" Grid.Row="1" Grid.Column="2" />
+                <Button x:Name="btnOk" Tapped="OnOkFp_Click" Grid.Row="1" Grid.Column="0" Style="{ThemeResource CustomButtonStyle}"/>
+                <Button x:Name="btnCancel" Tapped="OnCancelFp_Click" Grid.Row="1" Grid.Column="1"  Style="{ThemeResource CustomButtonStyle}"/>
+                <Button x:Name="btnShare" Tapped="OnFPShare_Click" Grid.Row="1" Grid.Column="2"  Style="{ThemeResource CustomButtonStyle}"/>
         </Grid>
     </Grid>
-
+    </Page.Content>
 </Page>

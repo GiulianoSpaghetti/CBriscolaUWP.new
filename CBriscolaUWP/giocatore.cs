@@ -39,8 +39,6 @@ namespace CBriscolaUWP {
 		public void addCarta(mazzo m)
 		{
 			UInt16 i = 0;
-			UInt16 j = 0;
-			carta c;
 			carta temp;
 			if (iCarta == numeroCarte && iCartaGiocata == (UInt16)CARTA_GIOCATA.NESSUNA_CARTA_GIOCATA)
 				throw new ArgumentException($"Chiamato giocatore::setCarta con mano.size()==numeroCarte=={numeroCarte}");

@@ -139,7 +139,7 @@
     <value>coppe</value>
   </data>
   <data name="denari" xml:space="preserve">
-    <value>deb</value>
+    <value>denari</value>
   </data>
   <data name="di" xml:space="preserve">
     <value>di</value>
@@ -212,7 +212,7 @@
     <value>Vuoi giocare ancora?</value>
   </data>
   <data name="Secondi" xml:space="preserve">
-    <value>Secondi</value>
+    <value>Numero di secondi durante il quale mostrare la giocata</value>
   </data>
   <data name="SemeBriscola" xml:space="preserve">
     <value>Il seme di briscola è</value>
