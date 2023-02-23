@@ -211,7 +211,7 @@
     <value>Do you want to play again?</value>
   </data>
   <data name="Secondi" xml:space="preserve">
-    <value>Seconds</value>
+    <value>Seconds during the which show the plays</value>
   </data>
   <data name="SemeBriscola" xml:space="preserve">
     <value>The seed of trump is</value>

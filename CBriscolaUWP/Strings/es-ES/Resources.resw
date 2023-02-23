@@ -210,7 +210,7 @@ El juego esta dibujado</value>
     <value>¿Quieres jugar de nuevo?</value>
   </data>
   <data name="Secondi" xml:space="preserve">
-    <value>Segundos</value>
+    <value>Segundos durante los cuales mostrar las jugadas</value>
   </data>
   <data name="SemeBriscola" xml:space="preserve">
     <value>El palo de triunfo es</value>

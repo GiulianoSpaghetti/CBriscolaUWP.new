@@ -211,7 +211,7 @@
     <value>Voulez-vous rejouer ?</value>
   </data>
   <data name="Secondi" xml:space="preserve">
-    <value>Secondes</value>
+    <value>Secondes pendant lesquelles montrer les pièces</value>
   </data>
   <data name="SemeBriscola" xml:space="preserve">
     <value>Le costume d'atout est</value>

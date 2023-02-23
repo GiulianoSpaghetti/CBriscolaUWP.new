@@ -211,7 +211,7 @@
     <value>Você quer jogar de novo?</value>
   </data>
   <data name="Secondi" xml:space="preserve">
-    <value>Segundos</value>
+    <value>Segundos durante os quais mostrar as jogadas</value>
   </data>
   <data name="SemeBriscola" xml:space="preserve">
     <value>O naipe de trunfo é</value>

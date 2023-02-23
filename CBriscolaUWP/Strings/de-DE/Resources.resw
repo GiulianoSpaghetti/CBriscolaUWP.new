@@ -211,7 +211,7 @@
     <value>Willst du wieder spielen?</value>
   </data>
   <data name="Secondi" xml:space="preserve">
-    <value>Sekunden</value>
+    <value>Sekunden, in denen die Stücke gezeigt werden</value>
   </data>
   <data name="SemeBriscola" xml:space="preserve">
     <value>Der Trumpfanzug ist</value>
