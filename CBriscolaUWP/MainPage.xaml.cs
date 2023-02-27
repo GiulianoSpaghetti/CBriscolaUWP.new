@@ -287,6 +287,11 @@ namespace CBriscolaUWP
             return true;
         }
 
+        public static string GetLocalizedString (string s)
+        {
+            return resourceMap.GetValue(s, resourceContext).ValueAsString;
+        }
+
         private void Image_Tapped(object Sender, TappedRoutedEventArgs arg)
         {
             Image img = (Image)Sender;

@@ -29,7 +29,6 @@ namespace org.altervista.numerone.framework
             seme = helper.GetSeme(n);
             valore = helper.GetValore(n);
             punteggio = helper.GetPunteggio(n);
-            semeStr = helper.GetSemeStr(n);
         }
         public static void Inizializza(UInt16 n, CartaHelperBriscola h)
         {
@@ -37,6 +36,7 @@ namespace org.altervista.numerone.framework
             {
                 carte[i] = new Carta(i, h);
                 carte[i].img = new BitmapImage(new Uri("ms-appx:///Resources/" + i + ".png"));
+                semeStr = helper.GetSemeStr(n);
             }
         }
         public static Carta GetCarta(UInt16 quale) { return carte[quale]; }

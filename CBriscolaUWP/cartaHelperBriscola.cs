@@ -7,6 +7,7 @@
  *
  */
 
+using CBriscolaUWP;
 using System;
 
 namespace org.altervista.numerone.framework
@@ -45,10 +46,10 @@ namespace org.altervista.numerone.framework
 			string s="";
 			switch (carta % 10)
 			{
-				case 0: s = "Bastoni"; break;
-				case 1: s = "Coppe"; break;
-				case 2: s = "Denari"; break;
-				case 3: s = "Spade"; break;
+				case 0: s = MainPage.GetLocalizedString("bastoni"); break;
+				case 1: s = MainPage.GetLocalizedString("coppe"); break;
+				case 2: s = MainPage.GetLocalizedString("denari"); break;
+				case 3: s = MainPage.GetLocalizedString("spade"); break;
 			}
             return s;
         }
