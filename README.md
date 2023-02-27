@@ -6,7 +6,8 @@ La cbriscola grafica in UWP, il falso vero Project Carmela
 
 # BUg noti
 
-Su Microsoft Xbox One Series X se si mett in stand by il programma, il puntatore se n va e non è più possibile giocare.
+Su Microsoft Xbox One Series X se si mette in stand by il programma, il puntatore se ne va e non è più possibile giocare.
+
 Su Xbox, per cambiare linguaggio biosgna disinstallare e reinstallare l'applicativo.
 
 # The old fashion compiled way
