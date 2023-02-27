@@ -36,7 +36,7 @@ namespace org.altervista.numerone.framework
             {
                 carte[i] = new Carta(i, h);
                 carte[i].img = new BitmapImage(new Uri("ms-appx:///Resources/" + i + ".png"));
-                semeStr = helper.GetSemeStr(n);
+                carte[i].semeStr = h.GetSemeStr(n);
             }
         }
         public static Carta GetCarta(UInt16 quale) { return carte[quale]; }
