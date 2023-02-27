@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,10 +28,13 @@ namespace CBriscolaUWP
         /// Inizializza l'oggetto Application singleton. Si tratta della prima riga del codice creato
         /// creato e, come tale, corrisponde all'equivalente logico di main() o WinMain().
         /// </summary>
-        public static ResourceMap resourceMap = ResourceManager.Current.MainResourceMap.GetSubtree("Resources");
-        public static ResourceContext resourceContext = ResourceContext.GetForCurrentView();
+        public static string piattaforma;
         public App()
         {
+            EasClientDeviceInformation eas = new EasClientDeviceInformation();
+            piattaforma = eas.SystemProductName;
+            if (piattaforma == "System Product Name")
+                piattaforma = "PC";
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
