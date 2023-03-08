@@ -4,9 +4,7 @@ La cbriscola grafica in UWP, il falso vero Project Carmela
 # Come ottenere
 [![microsoft](https://get.microsoft.com/images/en-us%20dark.svg)](https://www.microsoft.com/store/apps/9NX1JKTQK12C)
 
-# BUg noti
-
-Su Microsoft Xbox One Series X se si mette in stand by il programma, il puntatore se ne va e non è più possibile giocare.
+# Bug noti
 
 Su Xbox, per cambiare linguaggio biosgna disinstallare e reinstallare l'applicativo.
 
