@@ -43,20 +43,21 @@ namespace CBriscolaUWP
         private ThreadPoolTimer t;
         public MainPage()
         {
-            this.InitializeComponent();
             string s;
             SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += Close;
 
             resourceContext = new Windows.ApplicationModel.Resources.Core.ResourceContext(); // not using ResourceContext.GetForCurrentView
             resourceContext.QualifierValues["Language"] = new DateTimeFormatter("longdate", new[] { CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToUpper() }).ResolvedLanguage;
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = CultureInfo.CurrentUICulture.Name;
             resourceMap = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetSubtree("Resources");
             NamedResource res;
             resourceMap.TryGetValue("PuntiDiPrefisso", out res);
             s = res.Resolve(resourceContext).ValueAsString;
             if (s==null) {
                 resourceContext.QualifierValues["Language"] = new DateTimeFormatter("longdate", new[] { "US" }).ResolvedLanguage;
-
+                Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US";
             }
+            this.InitializeComponent();
             delay = TimeSpan.FromSeconds(secondi);
             e = new ElaboratoreCarteBriscola(briscolaDaPunti);
             m = new Mazzo(e);
