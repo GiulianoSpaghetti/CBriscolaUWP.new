@@ -295,6 +295,8 @@ namespace CBriscolaUWP
 
         private void Image_Tapped(object Sender, TappedRoutedEventArgs arg)
         {
+            if (t!=null)
+                return;
             Image img = (Image)Sender;
             i = GiocaUtente(img);
             if (secondo == cpu)
@@ -374,6 +376,7 @@ namespace CBriscolaUWP
                         Applicazione.Visibility = Visibility.Collapsed;
                         FinePartita.Visibility = Visibility.Visible;
                     }
+                    t = null;
                 });
             }, delay);
         }
