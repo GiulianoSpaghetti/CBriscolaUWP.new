@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Imaging;
 using org.altervista.numerone.framework;
+using Windows.System.Profile.SystemManufacturers;
+using Windows.UI.Popups;
 // Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x410
 
 namespace CBriscolaUWP
@@ -34,13 +36,14 @@ namespace CBriscolaUWP
         private static Image i, i1;
         private static UInt16 secondi = 5;
         private static TimeSpan delay;
-        private static bool avvisaTalloneFinito=true, briscolaDaPunti=false;
+        private static bool avvisaTalloneFinito=true, briscolaDaPunti=false, primoutente = true;
         ElaboratoreCarteBriscola e;
         public static ResourceMap resourceMap;
         public static ResourceContext resourceContext;
-        private Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-        private Windows.Storage.ApplicationDataContainer container;
+        private Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings, container;
         private ThreadPoolTimer t;
+        private MessageDialog d;
+
         public MainPage()
         {
             string s;
@@ -133,6 +136,12 @@ namespace CBriscolaUWP
             tbInfo.Text = resourceMap.GetValue("InfoApp", resourceContext).ValueAsString;
             btnInfo.Content = resourceMap.GetValue("MaggioriInfo", resourceContext).ValueAsString;
             Briscola.Source = briscola.GetImmagine();
+            if (!SystemSupportInfo.LocalDeviceInfo.SystemProductName.Contains("Xbox"))
+            {
+                d = new MessageDialog("Unsupported Platform");
+                d.Commands.Add(new UICommand("Exit", new UICommandInvokedHandler(exit)));
+                IAsyncOperation<IUICommand> asyncOperation = d.ShowAsync();
+            }
         }
         private Image GiocaUtente(Image img)
         {
@@ -247,10 +256,25 @@ namespace CBriscolaUWP
             CartaBriscola.Visibility = Visibility.Visible;
             Briscola.Source = briscola.GetImmagine();
             Briscola.Visibility = Visibility.Visible;
-            primo = g;
-            secondo = cpu;
             Briscola.Source = briscola.GetImmagine();
             Applicazione.Visibility = Visibility.Visible;
+            primoutente = !primoutente;
+            if (primoutente)
+            {
+                primo = g;
+                secondo = cpu;
+            }
+            else
+            {
+                secondo = g;
+                primo = cpu;
+                i1 = GiocaCpu();
+            }
+        }
+
+        private void exit(IUICommand command)
+        {
+            Application.Current.Exit();
         }
         private void OnCancelFp_Click(object sender, TappedRoutedEventArgs e)
         {
