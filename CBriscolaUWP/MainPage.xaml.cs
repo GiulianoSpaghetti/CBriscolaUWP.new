@@ -65,7 +65,7 @@ namespace CBriscolaUWP
             e = new ElaboratoreCarteBriscola(briscolaDaPunti);
             m = new Mazzo(e);
             Carta.Inizializza(40, CartaHelperBriscola.GetIstanza(e));
-            container = localSettings.CreateContainer("CBriscola", Windows.Storage.ApplicationDataCreateDisposition.Existing);
+            container = localSettings.CreateContainer("CBriscola", Windows.Storage.ApplicationDataCreateDisposition.Always);
             s = localSettings.Containers["CBriscola"].Values["numeUtente"] as string;
             if (s == null)
                 s = "numerone";
