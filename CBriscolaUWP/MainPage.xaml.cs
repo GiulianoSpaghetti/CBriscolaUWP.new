@@ -403,12 +403,18 @@ namespace CBriscolaUWP
                                 s = resourceMap.GetValue("HaiVinto", resourceContext).ValueAsString;
                             else
                                 s = resourceMap.GetValue("HaiPerso", resourceContext).ValueAsString;
-                            s = $"{s} {resourceMap.GetValue("per", resourceContext).ValueAsString} {Math.Abs(g.GetPunteggio() - cpu.GetPunteggio())}  {resourceMap.GetValue("punti", resourceContext).ValueAsString}";
+                            s = $"{s} {resourceMap.GetValue("per", resourceContext).ValueAsString} {Math.Abs(g.GetPunteggio() - cpu.GetPunteggio())}  {resourceMap.GetValue("punti", resourceContext).ValueAsString}.";
                         }
-                        if (partite%2==0)
-                            s+=$" {resourceMap.GetValue("SecondaPartita", resourceContext).ValueAsString}";
+                        if (partite % 2 == 0)
+                        {
+                            s += $" {resourceMap.GetValue("SecondaPartita", resourceContext).ValueAsString}";
+                            btnShare.Visibility = Visibility.Collapsed;
+                        }
                         else
+                        {
                             s += $" {resourceMap.GetValue("NuovaPartita", resourceContext).ValueAsString}";
+                            btnShare.Visibility = Visibility.Visible;
+                        }
                         if (partite == UInt64.MaxValue)
                         {
                             d = new MessageDialog("You are playing too mutch, aren't you?");
