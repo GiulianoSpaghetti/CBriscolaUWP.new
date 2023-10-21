@@ -20,6 +20,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using org.altervista.numerone.framework;
 using Windows.System.Profile.SystemManufacturers;
 using Windows.UI.Popups;
+using System.ComponentModel.Design;
 // Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x410
 
 namespace CBriscolaUWP
@@ -34,7 +35,8 @@ namespace CBriscolaUWP
         private static Carta c, c1, briscola;
         private static BitmapImage cartaCpu = new BitmapImage(new Uri("ms-appx:///Resources/retro carte pc.png"));
         private static Image i, i1;
-        private static UInt16 secondi = 5;
+        private static UInt16 secondi = 5, puntiUtente=0, puntiCpu=0;
+        private static UInt64 partite = 0;
         private static TimeSpan delay;
         private static bool avvisaTalloneFinito=true, briscolaDaPunti=false, primoutente = true;
         ElaboratoreCarteBriscola e;
@@ -220,6 +222,11 @@ namespace CBriscolaUWP
         private void OnOkFp_Click(object sender, TappedRoutedEventArgs evt)
         {
             bool cartaBriscola = true;
+            if (partite%2==0)
+            {
+                puntiUtente = 0;
+                puntiCpu = 0;
+            }
             FinePartita.Visibility = Visibility.Collapsed;
             if (cbCartaBriscola.IsChecked == null || cbCartaBriscola.IsChecked == false)
                 cartaBriscola = false;
@@ -386,17 +393,32 @@ namespace CBriscolaUWP
                     else
                     {
                         string s;
-                        if (g.GetPunteggio() == cpu.GetPunteggio())
+                        puntiUtente += g.GetPunteggio();
+                        puntiCpu += cpu.GetPunteggio();
+                        if (puntiUtente == puntiCpu)
                             s = resourceMap.GetValue("PartitaPatta", resourceContext).ValueAsString;
                         else
                         {
-                            if (g.GetPunteggio() > cpu.GetPunteggio())
+                            if (puntiUtente > puntiCpu)
                                 s = resourceMap.GetValue("HaiVinto", resourceContext).ValueAsString;
                             else
                                 s = resourceMap.GetValue("HaiPerso", resourceContext).ValueAsString;
                             s = $"{s} {resourceMap.GetValue("per", resourceContext).ValueAsString} {Math.Abs(g.GetPunteggio() - cpu.GetPunteggio())}  {resourceMap.GetValue("punti", resourceContext).ValueAsString}";
                         }
-                        fpRisultrato.Text = $"{resourceMap.GetValue("PartitaFinita", resourceContext).ValueAsString}. {s} {resourceMap.GetValue("SecondaPartita", resourceContext).ValueAsString}";
+                        if (partite%2==0)
+                            s+=$" {resourceMap.GetValue("SecondaPartita", resourceContext).ValueAsString}";
+                        else
+                            s += $" {resourceMap.GetValue("NuovaPartita", resourceContext).ValueAsString}";
+                        if (partite == UInt64.MaxValue)
+                        {
+                            d = new MessageDialog("You are playing too mutch, aren't you?");
+                            d.Commands.Add(new UICommand("Exit", new UICommandInvokedHandler(exit)));
+                            IAsyncOperation<IUICommand> asyncOperation = d.ShowAsync();
+
+                        }
+                        else
+                            partite++;
+                        fpRisultrato.Text = $"{resourceMap.GetValue("PartitaFinita", resourceContext).ValueAsString}. {s}?";
                         Applicazione.Visibility = Visibility.Collapsed;
                         FinePartita.Visibility = Visibility.Visible;
                     }

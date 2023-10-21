@@ -183,6 +183,9 @@
   <data name="NomeUtente" xml:space="preserve">
     <value>nombre de usuraio</value>
   </data>
+  <data name="NuovaPartita" xml:space="preserve">
+    <value>¿Quieres jugar un juego nuevo</value>
+  </data>
   <data name="Opzioni" xml:space="preserve">
     <value>Opciones</value>
   </data>
@@ -207,7 +210,7 @@ El juego esta dibujado</value>
     <value />
   </data>
   <data name="SecondaPartita" xml:space="preserve">
-    <value>¿Quieres jugar de nuevo?</value>
+    <value>¿Quieres jugar el segundo juego</value>
   </data>
   <data name="Secondi" xml:space="preserve">
     <value>Segundos durante los cuales mostrar las jugadas</value>

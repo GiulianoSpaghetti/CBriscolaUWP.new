@@ -186,6 +186,9 @@
   <data name="NomeUtente" xml:space="preserve">
     <value>Nome Utente</value>
   </data>
+  <data name="NuovaPartita" xml:space="preserve">
+    <value>Möchten Sie ein neues Spiel spielen</value>
+  </data>
   <data name="Opzioni" xml:space="preserve">
     <value>Optionen</value>
   </data>
@@ -208,7 +211,7 @@
     <value>-punkte</value>
   </data>
   <data name="SecondaPartita" xml:space="preserve">
-    <value>Willst du wieder spielen?</value>
+    <value>Möchtest du das zweite Spiel spielen</value>
   </data>
   <data name="Secondi" xml:space="preserve">
     <value>Sekunden, in denen die Stücke gezeigt werden</value>
