@@ -462,7 +462,7 @@ namespace CBriscolaUWP
 
         private async void OnFPShare_Click(object sender, TappedRoutedEventArgs e)
         {
-            await Launcher.LaunchUriAsync(new Uri($"https://twitter.com/intent/tweet?text=With%20the%20CBriscola%20the%20game%20{g.GetNome()}%20versus%20{cpu.GetNome()}%20is%20finished%20{g.GetPunteggio()}%20at%20{cpu.GetPunteggio()}%20on%20platform%20{App.piattaforma}%20with%20Neapolitan%20Deck&url=https%3A%2F%2Fgithub.com%2Fnumerunix%2Fcbriscolauwp.new"));
+            await Launcher.LaunchUriAsync(new Uri($"https://twitter.com/intent/tweet?text=With%20the%20CBriscola%20the%20game%20{g.GetNome()}%20versus%20{cpu.GetNome()}%20is%20finished%20{puntiUtente}%20at%20{puntiCpu}%20on%20platform%20{App.piattaforma}%20with%20Neapolitan%20Deck&url=https%3A%2F%2Fgithub.com%2Fnumerunix%2Fcbriscolauwp.new"));
         }
 
 
