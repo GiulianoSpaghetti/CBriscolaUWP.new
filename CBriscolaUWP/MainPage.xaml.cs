@@ -35,13 +35,14 @@ namespace CBriscolaUWP
         private static Carta c, c1, briscola;
         private static BitmapImage cartaCpu = new BitmapImage(new Uri("ms-appx:///Resources/retro carte pc.png"));
         private static Image i, i1;
-        private static UInt16 secondi = 5, puntiUtente=0, puntiCpu=0;
+        private static UInt16 secondi = 5;
         private static UInt64 partite = 0;
         private static TimeSpan delay;
         private static bool avvisaTalloneFinito=true, briscolaDaPunti=false, primoutente = true;
         ElaboratoreCarteBriscola e;
         public static ResourceMap resourceMap;
         public static ResourceContext resourceContext;
+        private static bool cartaBriscola = true;
         private Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings, container;
         private ThreadPoolTimer t;
         private MessageDialog d;
@@ -138,12 +139,12 @@ namespace CBriscolaUWP
             tbInfo.Text = resourceMap.GetValue("InfoApp", resourceContext).ValueAsString;
             btnInfo.Content = resourceMap.GetValue("MaggioriInfo", resourceContext).ValueAsString;
             Briscola.Source = briscola.GetImmagine();
-            if (!SystemSupportInfo.LocalDeviceInfo.SystemProductName.Contains("Xbox"))
+           /* if (!SystemSupportInfo.LocalDeviceInfo.SystemProductName.Contains("Xbox"))
             {
                 d = new MessageDialog("Unsupported Platform");
                 d.Commands.Add(new UICommand("Exit", new UICommandInvokedHandler(exit)));
                 IAsyncOperation<IUICommand> asyncOperation = d.ShowAsync();
-            }
+            }*/
         }
         private Image GiocaUtente(Image img)
         {
@@ -221,20 +222,14 @@ namespace CBriscolaUWP
 
         private void OnOkFp_Click(object sender, TappedRoutedEventArgs evt)
         {
-            bool cartaBriscola = true;
-            if (partite%2==0)
-            {
-                puntiUtente = 0;
-                puntiCpu = 0;
-            }
             FinePartita.Visibility = Visibility.Collapsed;
-            if (cbCartaBriscola.IsChecked == null || cbCartaBriscola.IsChecked == false)
-                cartaBriscola = false;
-            e = new ElaboratoreCarteBriscola(cartaBriscola) ;
             m = new Mazzo(e);
             briscola = Carta.GetCarta(ElaboratoreCarteBriscola.GetCartaBriscola());
-            g = new Giocatore(new GiocatoreHelperUtente(), g.GetNome(), 3);
-            cpu = new Giocatore(new GiocatoreHelperCpu(ElaboratoreCarteBriscola.GetCartaBriscola()), cpu.GetNome(), 3);
+            if (partite % 2 == 0)
+            {
+                g.CancellaPunteggi();
+                cpu.CancellaPunteggi();
+            }
             for (UInt16 i = 0; i < 3; i++)
             {
                 g.AddCarta(m);
@@ -328,10 +323,6 @@ namespace CBriscolaUWP
         {
             if (t!=null)
                 return;
-            Image img = (Image)Sender;
-            i = GiocaUtente(img);
-            if (secondo == cpu)
-                i1 = GiocaCpu();
             t = ThreadPoolTimer.CreateTimer((source) =>
             {
 
@@ -393,17 +384,20 @@ namespace CBriscolaUWP
                     else
                     {
                         string s;
-                        puntiUtente += g.GetPunteggio();
-                        puntiCpu += cpu.GetPunteggio();
-                        if (puntiUtente == puntiCpu)
+                        if (cbCartaBriscola.IsChecked == null || cbCartaBriscola.IsChecked == false)
+                            cartaBriscola = false;
+                        e = new ElaboratoreCarteBriscola(cartaBriscola);
+                        g.Resetta(new GiocatoreHelperUtente());
+                        cpu.Resetta(new GiocatoreHelperCpu(ElaboratoreCarteBriscola.GetCartaBriscola()));
+                        if (g.GetPunteggi() == cpu.GetPunteggi())
                             s = resourceMap.GetValue("PartitaPatta", resourceContext).ValueAsString;
                         else
                         {
-                            if (puntiUtente > puntiCpu)
-                                s = resourceMap.GetValue("HaiVinto", resourceContext).ValueAsString;
+                            if (g.GetPunteggi() > cpu.GetPunteggi())
+                                s = $"{resourceMap.GetValue("HaiVinto", resourceContext).ValueAsString} {resourceMap.GetValue("per", resourceContext).ValueAsString} {g.GetPunteggi() - cpu.GetPunteggi()}  {resourceMap.GetValue("punti", resourceContext).ValueAsString}.";
                             else
-                                s = resourceMap.GetValue("HaiPerso", resourceContext).ValueAsString;
-                            s = $"{s} {resourceMap.GetValue("per", resourceContext).ValueAsString} {Math.Abs(g.GetPunteggio() - cpu.GetPunteggio())}  {resourceMap.GetValue("punti", resourceContext).ValueAsString}.";
+                                s = $"{resourceMap.GetValue("HaiPerso", resourceContext).ValueAsString} {resourceMap.GetValue("per", resourceContext).ValueAsString} {cpu.GetPunteggi() - g.GetPunteggi()}  {resourceMap.GetValue("punti", resourceContext).ValueAsString}.";
+
                         }
                         if (partite % 2 == 0)
                         {
@@ -431,6 +425,10 @@ namespace CBriscolaUWP
                     t = null;
                 });
             }, delay);
+            Image img = (Image)Sender;
+            i = GiocaUtente(img);
+            if (secondo == cpu)
+                i1 = GiocaCpu();
         }
         public void OnOk_Click(Object source, RoutedEventArgs evt)
         {
@@ -462,7 +460,7 @@ namespace CBriscolaUWP
 
         private async void OnFPShare_Click(object sender, TappedRoutedEventArgs e)
         {
-            await Launcher.LaunchUriAsync(new Uri($"https://twitter.com/intent/tweet?text=With%20the%20CBriscola%20the%20game%20{g.GetNome()}%20versus%20{cpu.GetNome()}%20is%20finished%20{puntiUtente}%20at%20{puntiCpu}%20on%20platform%20{App.piattaforma}%20with%20Neapolitan%20Deck&url=https%3A%2F%2Fgithub.com%2Fnumerunix%2Fcbriscolauwp.new"));
+            await Launcher.LaunchUriAsync(new Uri($"https://twitter.com/intent/tweet?text=With%20the%20CBriscola%20the%20game%20{g.GetNome()}%20versus%20{cpu.GetNome()}%20is%20finished%20{g.GetPunteggi()}%20at%20{cpu.GetPunteggi()}%20on%20platform%20{App.piattaforma}%20with%20Neapolitan%20Deck&url=https%3A%2F%2Fgithub.com%2Fnumerunix%2Fcbriscolauwp.new"));
         }
 
 
