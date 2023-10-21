@@ -44,7 +44,7 @@ namespace org.altervista.numerone.framework
         public string GetSemeStr(UInt16 carta)
         {
 			string s="";
-			switch (carta % 10)
+			switch (GetSeme(carta))
 			{
 				case 0: s = MainPage.GetLocalizedString("bastoni"); break;
 				case 1: s = MainPage.GetLocalizedString("coppe"); break;
