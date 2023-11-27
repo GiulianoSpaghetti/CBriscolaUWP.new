@@ -6,7 +6,7 @@ La cbriscola grafica in UWP, il falso vero Project Carmela
 
 # Bug noti
 
-Su Xbox, per cambiare linguaggio biosgna disinstallare e reinstallare l'applicativo.
+Su Xbox, per cambiare linguaggio bisogna disinstallare e reinstallare l'applicativo.
 
 # The old fashion compiled way
 
