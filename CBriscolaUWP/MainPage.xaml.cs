@@ -65,10 +65,16 @@ namespace CBriscolaUWP
             }
             this.InitializeComponent();
             delay = TimeSpan.FromSeconds(secondi);
+            container = localSettings.CreateContainer("CBriscola", Windows.Storage.ApplicationDataCreateDisposition.Always);
+            s = localSettings.Containers["CBriscola"].Values["briscolaDaPunti"] as string;
+            if (s == null || s == "false")
+                briscolaDaPunti = false;
+            else
+                briscolaDaPunti = true;
+
             e = new ElaboratoreCarteBriscola(briscolaDaPunti);
             m = new Mazzo(e);
             Carta.Inizializza(40, CartaHelperBriscola.GetIstanza(e));
-            container = localSettings.CreateContainer("CBriscola", Windows.Storage.ApplicationDataCreateDisposition.Always);
             s = localSettings.Containers["CBriscola"].Values["numeUtente"] as string;
             if (s == null)
                 s = "numerone";
@@ -90,11 +96,6 @@ namespace CBriscolaUWP
                 secondi = 5;
             }
             delay = TimeSpan.FromSeconds(secondi);
-            s = localSettings.Containers["CBriscola"].Values["briscolaDaPunti"] as string;
-            if (s == null || s == "false")
-                briscolaDaPunti = false;
-            else
-                briscolaDaPunti = true;
             s = localSettings.Containers["CBriscola"].Values["avvisaTalloneFinito"] as string;
             if (s == null || s == "false")
                 avvisaTalloneFinito = false;
@@ -223,6 +224,7 @@ namespace CBriscolaUWP
         private void OnOkFp_Click(object sender, TappedRoutedEventArgs evt)
         {
             FinePartita.Visibility = Visibility.Collapsed;
+            e = new ElaboratoreCarteBriscola(briscolaDaPunti);
             m = new Mazzo(e);
             briscola = Carta.GetCarta(ElaboratoreCarteBriscola.GetCartaBriscola());
             if (partite % 2 == 0)
