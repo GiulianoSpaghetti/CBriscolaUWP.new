@@ -128,30 +128,23 @@ namespace org.altervista.numerone.framework
 			return numeroCarte;
 		}
 
-		public void Resetta(GiocatoreHelper h)
+		public void Resetta(GiocatoreHelper h=null, bool resettaPunteggi=true)
 		{
-			if (numeroCarte > 1)
-				throw new Exception("Chiamato resetta con numeroCarte!=0");
-			else
-			{
-				numeroCarte = dimensioneMano;
+			numeroCarte = dimensioneMano;
+			if (h != null)
 				helper = h;
-                iCartaGiocata = (UInt16)(Carta_GIOCATA.NESSUNA_Carta_GIOCATA);
-                iCarta = 0;
+			iCartaGiocata = (UInt16)(Carta_GIOCATA.NESSUNA_Carta_GIOCATA);
+			iCarta = 0;
+			for (UInt16 i = 0; i < dimensioneMano; i++)
+				mano[i] = null;
+			if (resettaPunteggi)
+				punteggi.Clear();
+			else if (GetPunteggio() > 0)
 				punteggi.Add(GetPunteggio());
-				punteggio = 0;
-				for (UInt16 i = 0; i < dimensioneMano; i++)
-					mano[i] = null;
+            punteggio = 0;
+        }
 
-			}
-		}
-
-		public void CancellaPunteggi()
-		{
-			punteggi.Clear();
-		}
-
-		public UInt64 GetPunteggi()
+        public UInt64 GetPunteggi()
 		{
 			UInt64 p=0;
 			foreach (UInt16 i in punteggi)

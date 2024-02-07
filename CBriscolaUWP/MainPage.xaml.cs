@@ -224,15 +224,16 @@ namespace CBriscolaUWP
         private void OnOkFp_Click(object sender, TappedRoutedEventArgs evt)
         {
             FinePartita.Visibility = Visibility.Collapsed;
-            e = new ElaboratoreCarteBriscola(briscolaDaPunti);
+            if (cbCartaBriscola.IsChecked == null || cbCartaBriscola.IsChecked == false)
+                cartaBriscola = false;
+            else
+                cartaBriscola = true;
+            e = new ElaboratoreCarteBriscola(cartaBriscola);
             m = new Mazzo(e);
             briscola = Carta.GetCarta(ElaboratoreCarteBriscola.GetCartaBriscola());
-            if (partite % 2 == 0)
-            {
-                g.CancellaPunteggi();
-                cpu.CancellaPunteggi();
-            }
-            for (UInt16 i = 0; i < 3; i++)
+            g.Resetta(null, partite % 2 == 0);
+            cpu.Resetta(new GiocatoreHelperCpu(ElaboratoreCarteBriscola.GetCartaBriscola()), partite % 2 == 0);
+             for (UInt16 i = 0; i < 3; i++)
             {
                 g.AddCarta(m);
                 cpu.AddCarta(m);
@@ -386,11 +387,8 @@ namespace CBriscolaUWP
                     else
                     {
                         string s;
-                        if (cbCartaBriscola.IsChecked == null || cbCartaBriscola.IsChecked == false)
-                            cartaBriscola = false;
-                        e = new ElaboratoreCarteBriscola(cartaBriscola);
-                        g.Resetta(new GiocatoreHelperUtente());
-                        cpu.Resetta(new GiocatoreHelperCpu(ElaboratoreCarteBriscola.GetCartaBriscola()));
+                        g.Resetta(null, false);
+                        cpu.Resetta(null, false);
                         if (g.GetPunteggi() == cpu.GetPunteggi())
                             s = resourceMap.GetValue("PartitaPatta", resourceContext).ValueAsString;
                         else

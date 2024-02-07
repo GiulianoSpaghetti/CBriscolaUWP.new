@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="21961GiulioSorrentino.315940154655C"
-    Publisher="CN=943AD59F-3DA9-4CFA-998C-F0F7FC0A251B"
+    Name="62612numerone.CBriscolaforXBox"
+    Publisher="CN=AC0F8650-1992-4799-948A-88BE66753B80"
     Version="1.1.17.0" />
 
-  <mp:PhoneIdentity PhoneProductId="3984ee26-5ae8-4d8d-bd37-1b397fb4dbed" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="9e00ed28-5c0c-40c4-86e5-0855a4e79ca7" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>CBriscola</DisplayName>
-    <PublisherDisplayName>Giulio Sorrentino</PublisherDisplayName>
+    <DisplayName>CBriscola for XBox</DisplayName>
+    <PublisherDisplayName>numerone</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -32,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="CBriscolaUWP.App">
       <uap:VisualElements
-        DisplayName="CBriscola"
+        DisplayName="CBriscola for XBox"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="CBriscolaUWP"
