@@ -1,4 +1,4 @@
-:it: Made in Italy. Il primo gioco indipendente (non indie free software per la xbox).
+:it: Made in Italy. Il primo gioco indipendente (non indie) free software per la xbox.
 
 ![Napoli-Logo](https://github.com/user-attachments/assets/b0218b39-2d99-4ce0-8c43-ac42b512b710)
 
