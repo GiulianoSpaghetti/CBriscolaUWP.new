@@ -127,7 +127,7 @@
     <value>sticks</value>
   </data>
   <data name="CartaBriscolaDaPunti" xml:space="preserve">
-    <value>The trump card can give you points</value>
+    <value>The trump card can have wight</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>card</value>
@@ -151,7 +151,7 @@
     <value>Trump has been played</value>
   </data>
   <data name="GiocataCartaDiValore" xml:space="preserve">
-    <value>Valuable Card Played</value>
+    <value>Card with Weight Played</value>
   </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>You loose</value>
@@ -217,7 +217,7 @@
     <value>Seconds during the which show the plays</value>
   </data>
   <data name="SemeBriscola" xml:space="preserve">
-    <value>The seed of trump is</value>
+    <value>The trump seed is</value>
   </data>
   <data name="Si" xml:space="preserve">
     <value>Yes</value>

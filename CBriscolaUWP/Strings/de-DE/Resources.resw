@@ -127,7 +127,7 @@
     <value>stöcke</value>
   </data>
   <data name="CartaBriscolaDaPunti" xml:space="preserve">
-    <value>Die Trumpfkarte kann Ihnen Punkte bringen</value>
+    <value>Die Karte, die die Trumpffarbe bezeichnet, kann Gewicht haben</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>karten</value>
@@ -151,7 +151,7 @@
     <value>Trumpf gespielt</value>
   </data>
   <data name="GiocataCartaDiValore" xml:space="preserve">
-    <value>Wertvolle Karte gespielt</value>
+    <value>Karte mit ausgespieltem Gewicht</value>
   </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>Du hast verloren</value>
@@ -217,7 +217,7 @@
     <value>Sekunden, in denen die Stücke gezeigt werden</value>
   </data>
   <data name="SemeBriscola" xml:space="preserve">
-    <value>Der Trumpfanzug ist</value>
+    <value>der Trumpfsamen ist</value>
   </data>
   <data name="Si" xml:space="preserve">
     <value>Ja</value>

@@ -127,7 +127,7 @@
     <value>gravetos</value>
   </data>
   <data name="CartaBriscolaDaPunti" xml:space="preserve">
-    <value>O trunfo pode lhe dar pontos</value>
+    <value>A carta que designa o naipe de trunfo pode ter um peso</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>cartas</value>
@@ -151,7 +151,7 @@
     <value>Jogou trunfo</value>
   </data>
   <data name="GiocataCartaDiValore" xml:space="preserve">
-    <value>Cartão de valor jogado</value>
+    <value>Cartão com placas de peso</value>
   </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>Oi pessoal</value>

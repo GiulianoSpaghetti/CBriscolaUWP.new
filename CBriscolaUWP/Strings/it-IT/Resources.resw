@@ -127,7 +127,7 @@
     <value>bastoni</value>
   </data>
   <data name="CartaBriscolaDaPunti" xml:space="preserve">
-    <value>La carta di briscola può dar punti</value>
+    <value>La carta di briscola può aver peso</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>carte</value>
@@ -151,7 +151,7 @@
     <value>Giocata Briscola</value>
   </data>
   <data name="GiocataCartaDiValore" xml:space="preserve">
-    <value>Giocata carta di valore</value>
+    <value>Giocata carta con peso</value>
   </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>Hai perso</value>

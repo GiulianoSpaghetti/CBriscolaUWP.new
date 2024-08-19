@@ -127,7 +127,7 @@
     <value>palos</value>
   </data>
   <data name="CartaBriscolaDaPunti" xml:space="preserve">
-    <value>La carta de triunfo puede darte puntos.</value>
+    <value>La carta que designa el palo de triunfo puede tener peso</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>tarjetas</value>
@@ -193,9 +193,7 @@
     <value>El partido ha terminado</value>
   </data>
   <data name="PartitaPatta" xml:space="preserve">
-    <value>18 / 5.000
-Risultati della traduzione
-El juego esta dibujado</value>
+    <value>El juego esta dibujado</value>
   </data>
   <data name="per" xml:space="preserve">
     <value>por</value>

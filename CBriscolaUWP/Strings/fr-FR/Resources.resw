@@ -127,7 +127,7 @@
     <value>bâtons</value>
   </data>
   <data name="CartaBriscolaDaPunti" xml:space="preserve">
-    <value>L'atout peut vous donner des points</value>
+    <value>La carte désignant l'atout peut avoir du poids</value>
   </data>
   <data name="carte" xml:space="preserve">
     <value>cartes</value>
@@ -151,7 +151,7 @@
     <value>A joué l'atout</value>
   </data>
   <data name="GiocataCartaDiValore" xml:space="preserve">
-    <value>Carte de valeur jouée</value>
+    <value>Carte avec poids jouée</value>
   </data>
   <data name="HaiPerso" xml:space="preserve">
     <value>Tu as perdu</value>
