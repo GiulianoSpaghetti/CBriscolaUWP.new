@@ -129,19 +129,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="carta.cs" />
-    <Compile Include="cartaHelper.cs" />
-    <Compile Include="cartaHelperBriscola.cs" />
-    <Compile Include="elaboratoreCarte.cs" />
-    <Compile Include="elaboratoreCarteBriscola.cs" />
-    <Compile Include="giocatore.cs" />
-    <Compile Include="giocatoreHelper.cs" />
-    <Compile Include="giocatoreHelperCpu.cs" />
-    <Compile Include="giocatoreHelperUtente.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="mazzo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
