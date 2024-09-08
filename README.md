@@ -31,13 +31,3 @@ A breve nella sezione bassa centrale comparirà la cbriscola, basta avviarla per
 # Donazione
 
 http://numerone.altervista.org/donazioni.php
-
-# Bibliografia
-
-https://stackoverflow.com/questions/39166595/uwp-get-current-cultureinfo
-
-https://code.4noobz.net/uwp-how-to-get-the-close-app-event/
-
-https://learn.microsoft.com/en-us/uwp/api/windows.storage.applicationdatacontainer?view=winrt-22621
-
-https://social.msdn.microsoft.com/Forums/vstudio/en-US/2d8a7dab-1bad-4405-b70d-768e4cb2af96/uwp-get-os-version-in-an-uwp-app?forum=wpdevelop
