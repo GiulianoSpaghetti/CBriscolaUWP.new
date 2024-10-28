@@ -348,40 +348,44 @@ namespace CBriscolaUWP
                     {
                         NelMazzoRimangono.Text = $"{resourceMap.GetValue("NelMazzoRimangono", resourceContext).ValueAsString} {m.GetNumeroCarte()} {resourceMap.GetValue("carte", resourceContext).ValueAsString}";
                         CartaBriscola.Text = $"{resourceMap.GetValue("SemeBriscola", resourceContext).ValueAsString}: {briscola.GetSemeStr()}";
-                        if (m.GetNumeroCarte()==2 && avvisaTalloneFinito)
-                            new ToastContentBuilder().AddArgument(resourceMap.GetValue("TalloneFinito", resourceContext).ValueAsString).AddText(resourceMap.GetValue("IlTalloneEFinito", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
-                        if (Briscola.Visibility == Visibility.Visible && m.GetNumeroCarte() == 0)
-                        {
-                            NelMazzoRimangono.Visibility = Visibility.Collapsed;
-                            Briscola.Visibility = Visibility.Collapsed;
+                        switch (m.GetNumeroCarte())
+                        case 2: if (avvisaTalloneFinito)
+                                new ToastContentBuilder().AddArgument(resourceMap.GetValue("TalloneFinito", resourceContext).ValueAsString).AddText(resourceMap.GetValue("IlTalloneEFinito", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                        break;
+                        case 0: if (Briscola.Visibility == Visibility.Visible)
+                            {
+                                NelMazzoRimangono.Visibility = Visibility.Collapsed;
+                                Briscola.Visibility = Visibility.Collapsed;
+                            }
+                        break;
                         }
                         Utente0.Source = g.GetImmagine(0);
                         if (cpu.GetNumeroCarte() > 1)
                             Utente1.Source = g.GetImmagine(1);
-                        if (cpu.GetNumeroCarte() > 2)
-                            Utente2.Source = g.GetImmagine(2);
-                        i.Visibility = Visibility.Visible;
-                        i1.Visibility = Visibility.Visible;
-                        Giocata0.Visibility = Visibility.Collapsed;
-                        Giocata1.Visibility = Visibility.Collapsed;
-                        if (cpu.GetNumeroCarte() == 2)
-                        {
-                            Utente2.Visibility = Visibility.Collapsed;
-                            Cpu2.Visibility = Visibility.Collapsed;
-                        }
-                        if (cpu.GetNumeroCarte() == 1)
-                        {
-                            Utente1.Visibility = Visibility.Collapsed;
-                            Cpu1.Visibility = Visibility.Collapsed;
-                        }
-                        if (primo == cpu)
-                        {
-                            i1 = GiocaCpu();
-                            if (cpu.GetCartaGiocata().StessoSeme(briscola))
-                                new ToastContentBuilder().AddArgument(resourceMap.GetValue("GiocataBriscola", resourceContext).ValueAsString).AddText($"{resourceMap.GetValue("LaCpuHaGiocatoIl", resourceContext).ValueAsString} {cpu.GetCartaGiocata().GetValore() + 1} {resourceMap.GetValue("diBriscola", resourceContext).ValueAsString}").AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
-                            else if (cpu.GetCartaGiocata().GetPunteggio() > 0)
-                                new ToastContentBuilder().AddArgument(resourceMap.GetValue("GiocataCartaDiValore", resourceContext).ValueAsString).AddText($"{resourceMap.GetValue("LaCpuHaGiocatoIl", resourceContext).ValueAsString} {cpu.GetCartaGiocata().GetValore() + 1} {resourceMap.GetValue("di", resourceContext).ValueAsString} {cpu.GetCartaGiocata().GetSemeStr()}").AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
-                        }
+                         if (cpu.GetNumeroCarte() > 2)
+                         Utente2.Source = g.GetImmagine(2);
+                         i.Visibility = Visibility.Visible;
+                         i1.Visibility = Visibility.Visible;
+                         Giocata0.Visibility = Visibility.Collapsed;
+                         Giocata1.Visibility = Visibility.Collapsed;
+                         if (cpu.GetNumeroCarte() == 2)
+                         {
+                             Utente2.Visibility = Visibility.Collapsed;
+                             Cpu2.Visibility = Visibility.Collapsed;
+                         }
+                         if (cpu.GetNumeroCarte() == 1)
+                         {
+                             Utente1.Visibility = Visibility.Collapsed;
+                             Cpu1.Visibility = Visibility.Collapsed;
+                         }
+                         if (primo == cpu)
+                         {
+                             i1 = GiocaCpu();
+                             if (cpu.GetCartaGiocata().StessoSeme(briscola))
+                                 new ToastContentBuilder().AddArgument(resourceMap.GetValue("GiocataBriscola", resourceContext).ValueAsString).AddText($"{resourceMap.GetValue("LaCpuHaGiocatoIl", resourceContext).ValueAsString} {cpu.GetCartaGiocata().GetValore() + 1} {resourceMap.GetValue("diBriscola", resourceContext).ValueAsString}").AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                             else if (cpu.GetCartaGiocata().GetPunteggio() > 0)
+                                 new ToastContentBuilder().AddArgument(resourceMap.GetValue("GiocataCartaDiValore", resourceContext).ValueAsString).AddText($"{resourceMap.GetValue("LaCpuHaGiocatoIl", resourceContext).ValueAsString} {cpu.GetCartaGiocata().GetValore() + 1} {resourceMap.GetValue("di", resourceContext).ValueAsString} {cpu.GetCartaGiocata().GetSemeStr()}").AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                         }
 
                     }
                     else
@@ -447,7 +451,11 @@ namespace CBriscolaUWP
                 secondi = UInt16.Parse(txtSecondi.Text);
             } catch (FormatException ex)
             {
-                txtSecondi.Text = resourceMap.GetValue("ValoreNonValido", resourceContext).ValueAsString; ;
+                 new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreNonValido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreNonValido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                return;
+            } catch (OverflowException ex)
+            {
+                 new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreNonValido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreNonValido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
                 return;
             }
             delay = TimeSpan.FromSeconds(secondi);
