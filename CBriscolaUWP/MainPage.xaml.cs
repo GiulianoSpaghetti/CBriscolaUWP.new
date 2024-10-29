@@ -91,10 +91,21 @@ namespace CBriscolaUWP
             {
                 secondi = UInt16.Parse(s);
             }
-            catch (Exception ex)
-            {
-                secondi = 5;
-            }
+             catch (FormatException ex)
+             {
+                 new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                 return;
+             }
+             catch (OverflowException ex1)
+             {
+                 new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                 return;
+             }
+             if (secondi<1 || secondi > 10)
+             {
+                 new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                 return;
+             }
             delay = TimeSpan.FromSeconds(secondi);
             s = localSettings.Containers["CBriscola"].Values["avvisaTalloneFinito"] as string;
             if (s == null || s == "false")
@@ -140,12 +151,12 @@ namespace CBriscolaUWP
             tbInfo.Text = resourceMap.GetValue("InfoApp", resourceContext).ValueAsString;
             btnInfo.Content = resourceMap.GetValue("MaggioriInfo", resourceContext).ValueAsString;
             Briscola.Source = briscola.GetImmagine();
-      /*      if (!SystemSupportInfo.LocalDeviceInfo.SystemProductName.Contains("Xbox"))
+            if (!SystemSupportInfo.LocalDeviceInfo.SystemProductName.Contains("Xbox"))
             {
                 d = new MessageDialog("Unsupported Platform");
                 d.Commands.Add(new UICommand("Exit", new UICommandInvokedHandler(exit)));
                 IAsyncOperation<IUICommand> asyncOperation = d.ShowAsync();
-            }*/
+            }
         }
         private Image GiocaUtente(Image img)
         {
