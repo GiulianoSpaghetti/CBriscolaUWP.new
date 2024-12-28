@@ -35,7 +35,7 @@ namespace CBriscolaUWP
         private static Carta c, c1, briscola;
         private static BitmapImage cartaCpu = new BitmapImage(new Uri("ms-appx:///Resources/retro carte pc.png"));
         private static Image i, i1;
-        private static UInt16 secondi = 5;
+        private static UInt16 secondi = 5, vecchiPuntiUtente=0, vecchiPuntiCPU=0;
         private static UInt64 partite = 0;
         private static TimeSpan delay;
         private static bool avvisaTalloneFinito=true, briscolaDaPunti=false, primoutente = true;
@@ -82,7 +82,7 @@ namespace CBriscolaUWP
             s = localSettings.Containers["CBriscola"].Values["nomeCpu"] as string;
             if (s == null)
                 s = "Cpu";
-            cpu = new Giocatore(new GiocatoreHelperCpu(ElaboratoreCarteBriscola.GetCartaBriscola()), s, 3);
+            cpu = new Giocatore(new GiocatoreHelperCpu2(ElaboratoreCarteBriscola.GetCartaBriscola()), s, 3);
             primo = g;
             secondo = cpu;
             briscola = Carta.GetCarta(ElaboratoreCarteBriscola.GetCartaBriscola());
@@ -101,6 +101,10 @@ namespace CBriscolaUWP
                  new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
                  return;
              }
+            catch (ArgumentNullException ex)
+            {
+                secondi = 5;
+            }
              if (secondi<1 || secondi > 10)
              {
                  new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
@@ -151,7 +155,7 @@ namespace CBriscolaUWP
             tbInfo.Text = resourceMap.GetValue("InfoApp", resourceContext).ValueAsString;
             btnInfo.Content = resourceMap.GetValue("MaggioriInfo", resourceContext).ValueAsString;
             Briscola.Source = briscola.GetImmagine();
-            if (!SystemSupportInfo.LocalDeviceInfo.SystemProductName.Contains("Xbox"))
+            if (!SystemSupportInfo.LocalDeviceInfo.SystemProductName.Contains("Surface"))
             {
                 d = new MessageDialog("Unsupported Platform");
                 d.Commands.Add(new UICommand("Exit", new UICommandInvokedHandler(exit)));
@@ -242,9 +246,12 @@ namespace CBriscolaUWP
             e = new ElaboratoreCarteBriscola(cartaBriscola);
             m = new Mazzo(e);
             briscola = Carta.GetCarta(ElaboratoreCarteBriscola.GetCartaBriscola());
-            g.Resetta(null, partite % 2 == 0);
-            cpu.Resetta(new GiocatoreHelperCpu(ElaboratoreCarteBriscola.GetCartaBriscola()), partite % 2 == 0);
-             for (UInt16 i = 0; i < 3; i++)
+            if (partite % 2 == 1)
+            {
+                vecchiPuntiUtente = 0;
+                vecchiPuntiCPU = 0;
+            }
+            for (UInt16 i = 0; i < 3; i++)
             {
                 g.AddCarta(m);
                 cpu.AddCarta(m);
@@ -360,15 +367,16 @@ namespace CBriscolaUWP
                         NelMazzoRimangono.Text = $"{resourceMap.GetValue("NelMazzoRimangono", resourceContext).ValueAsString} {m.GetNumeroCarte()} {resourceMap.GetValue("carte", resourceContext).ValueAsString}";
                         CartaBriscola.Text = $"{resourceMap.GetValue("SemeBriscola", resourceContext).ValueAsString}: {briscola.GetSemeStr()}";
                         switch (m.GetNumeroCarte())
-                        case 2: if (avvisaTalloneFinito)
-                                new ToastContentBuilder().AddArgument(resourceMap.GetValue("TalloneFinito", resourceContext).ValueAsString).AddText(resourceMap.GetValue("IlTalloneEFinito", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
-                        break;
-                        case 0: if (Briscola.Visibility == Visibility.Visible)
-                            {
-                                NelMazzoRimangono.Visibility = Visibility.Collapsed;
-                                Briscola.Visibility = Visibility.Collapsed;
-                            }
-                        break;
+                        { 
+                            case 2: if (avvisaTalloneFinito)
+                                    new ToastContentBuilder().AddArgument(resourceMap.GetValue("TalloneFinito", resourceContext).ValueAsString).AddText(resourceMap.GetValue("IlTalloneEFinito", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                            break;
+                            case 0: if (Briscola.Visibility == Visibility.Visible)
+                                {
+                                    NelMazzoRimangono.Visibility = Visibility.Collapsed;
+                                    Briscola.Visibility = Visibility.Collapsed;
+                                }
+                            break;
                         }
                         Utente0.Source = g.GetImmagine(0);
                         if (cpu.GetNumeroCarte() > 1)
@@ -402,16 +410,16 @@ namespace CBriscolaUWP
                     else
                     {
                         string s;
-                        g.Resetta(null, false);
-                        cpu.Resetta(null, false);
-                        if (g.GetPunteggi() == cpu.GetPunteggi())
+                        vecchiPuntiUtente += g.GetPunteggio();
+                        vecchiPuntiCPU += g.GetPunteggio();
+                        if (vecchiPuntiUtente == vecchiPuntiCPU)
                             s = resourceMap.GetValue("PartitaPatta", resourceContext).ValueAsString;
                         else
                         {
-                            if (g.GetPunteggi() > cpu.GetPunteggi())
-                                s = $"{resourceMap.GetValue("HaiVinto", resourceContext).ValueAsString} {resourceMap.GetValue("per", resourceContext).ValueAsString} {g.GetPunteggi() - cpu.GetPunteggi()}  {resourceMap.GetValue("punti", resourceContext).ValueAsString}.";
+                            if (vecchiPuntiUtente > vecchiPuntiCPU)
+                                s = $"{resourceMap.GetValue("HaiVinto", resourceContext).ValueAsString} {resourceMap.GetValue("per", resourceContext).ValueAsString} {vecchiPuntiUtente - vecchiPuntiCPU}  {resourceMap.GetValue("punti", resourceContext).ValueAsString}.";
                             else
-                                s = $"{resourceMap.GetValue("HaiPerso", resourceContext).ValueAsString} {resourceMap.GetValue("per", resourceContext).ValueAsString} {cpu.GetPunteggi() - g.GetPunteggi()}  {resourceMap.GetValue("punti", resourceContext).ValueAsString}.";
+                                s = $"{resourceMap.GetValue("HaiPerso", resourceContext).ValueAsString} {resourceMap.GetValue("per", resourceContext).ValueAsString} {vecchiPuntiCPU - vecchiPuntiUtente}  {resourceMap.GetValue("punti", resourceContext).ValueAsString}.";
 
                         }
                         if (partite % 2 == 0)
@@ -479,7 +487,7 @@ namespace CBriscolaUWP
 
         private async void OnFPShare_Click(object sender, TappedRoutedEventArgs e)
         {
-            await Launcher.LaunchUriAsync(new Uri($"https://twitter.com/intent/tweet?text=With%20the%20CBriscola%20the%20game%20{g.GetNome()}%20versus%20{cpu.GetNome()}%20is%20finished%20{g.GetPunteggi()}%20at%20{cpu.GetPunteggi()}%20on%20platform%20{App.piattaforma}%20with%20Neapolitan%20Deck&url=https%3A%2F%2Fgithub.com%2Fnumerunix%2Fcbriscolauwp.new"));
+            await Launcher.LaunchUriAsync(new Uri($"https://twitter.com/intent/tweet?text=With%20the%20CBriscola%20the%20game%20{g.GetNome()}%20versus%20{cpu.GetNome()}%20is%20finished%20{vecchiPuntiUtente}%20at%20{vecchiPuntiCPU}%20on%20platform%20{App.piattaforma}%20with%20Neapolitan%20Deck&url=https%3A%2F%2Fgithub.com%2Fnumerunix%2Fcbriscolauwp.new"));
         }
 
 
