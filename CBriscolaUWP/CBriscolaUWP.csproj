@@ -26,8 +26,9 @@
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <PackageCertificateThumbprint>309EF42EF264E7B0F919CF1451D2D33D3191F3C6</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>30591B6CFD326AC96099A4A82788582B84A86DB0</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <PackageCertificateKeyFile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -190,6 +191,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <None Include="CBriscolaUWP_TemporaryKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -276,6 +278,11 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\pt-PT\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CardFramework.UWP">
+      <HintPath>..\..\CardFramework.UWP\CardFramework.UWP\bin\Release\CardFramework.UWP.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

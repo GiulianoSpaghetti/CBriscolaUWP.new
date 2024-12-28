@@ -1,14 +1,6 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
+﻿
 using Windows.ApplicationModel.Resources.Core;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Globalization.DateTimeFormatting;
 using Windows.System;
 using Windows.System.Threading;
@@ -20,7 +12,9 @@ using Windows.UI.Xaml.Media.Imaging;
 using org.altervista.numerone.framework;
 using Windows.System.Profile.SystemManufacturers;
 using Windows.UI.Popups;
-using System.ComponentModel.Design;
+using System;
+using System.Globalization;
+using Microsoft.Toolkit.Uwp.Notifications;
 // Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x410
 
 namespace CBriscolaUWP
@@ -101,15 +95,10 @@ namespace CBriscolaUWP
                  new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
                  return;
              }
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException ex2)
             {
                 secondi = 5;
             }
-             if (secondi<1 || secondi > 10)
-             {
-                 new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreInvalido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
-                 return;
-             }
             delay = TimeSpan.FromSeconds(secondi);
             s = localSettings.Containers["CBriscola"].Values["avvisaTalloneFinito"] as string;
             if (s == null || s == "false")
@@ -155,12 +144,12 @@ namespace CBriscolaUWP
             tbInfo.Text = resourceMap.GetValue("InfoApp", resourceContext).ValueAsString;
             btnInfo.Content = resourceMap.GetValue("MaggioriInfo", resourceContext).ValueAsString;
             Briscola.Source = briscola.GetImmagine();
-            if (!SystemSupportInfo.LocalDeviceInfo.SystemProductName.Contains("Surface"))
+   /*         if (!SystemSupportInfo.LocalDeviceInfo.SystemProductName.Contains("Surface"))
             {
                 d = new MessageDialog("Unsupported Platform");
                 d.Commands.Add(new UICommand("Exit", new UICommandInvokedHandler(exit)));
                 IAsyncOperation<IUICommand> asyncOperation = d.ShowAsync();
-            }
+            }*/
         }
         private Image GiocaUtente(Image img)
         {
@@ -455,6 +444,7 @@ namespace CBriscolaUWP
         }
         public void OnOk_Click(Object source, RoutedEventArgs evt)
         {
+            UInt16 s;
             g.SetNome(txtNomeUtente.Text);
             cpu.SetNome(txtCpu.Text);
             if (cbCartaBriscola.IsChecked==null || cbCartaBriscola.IsChecked==false)
@@ -467,16 +457,25 @@ namespace CBriscolaUWP
                 avvisaTalloneFinito = true;
             try
             {
-                secondi = UInt16.Parse(txtSecondi.Text);
+                s = UInt16.Parse(txtSecondi.Text);
             } catch (FormatException ex)
             {
                  new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreNonValido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreNonValido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                txtSecondi.Text = secondi.ToString();
                 return;
             } catch (OverflowException ex)
             {
                  new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreNonValido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreNonValido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                txtSecondi.Text = secondi.ToString();
                 return;
             }
+            if (s<1|| s>20)
+            {
+                new ToastContentBuilder().AddArgument(resourceMap.GetValue("ValoreNonValido", resourceContext).ValueAsString).AddText(resourceMap.GetValue("ValoreNonValido", resourceContext).ValueAsString).AddAudio(new Uri("ms-winsoundevent:Notification.Reminder")).Show();
+                txtSecondi.Text = secondi.ToString();
+                return;
+            }
+            secondi = s;
             delay = TimeSpan.FromSeconds(secondi);
             NomeUtente.Text = g.GetNome();
             NomeCpu.Text = cpu.GetNome();
