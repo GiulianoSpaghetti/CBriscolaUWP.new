@@ -9,8 +9,10 @@
 ## CBriscolaUWP per il windows store
 La cbriscola grafica in UWP, il falso vero Project Carmela
 
-## Come ottenere
-[![microsoft](https://get.microsoft.com/images/en-us%20dark.svg)](https://www.microsoft.com/store/apps/9NX1JKTQK12C)
+## Come ricompilare
+Per prima cosa occorre ricompilare la libreria cardframework.uwp.
+Poi, una volta ottenuta la DLL, bisogna importarla nel progetto, non si può usare nuget perché è nato dopo.
+Bisogna cliccare col tasto destro su riferimenti e quindi aggiungi riferimento, poi sfoglia, e selezionare la dll.
 
 ## Bug noti
 
