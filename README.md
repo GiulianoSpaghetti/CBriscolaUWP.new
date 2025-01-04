@@ -1,5 +1,7 @@
 :it: Made in Italy. Il primo gioco indipendente (non indie) free software per la xbox.
 
+Questo gioco dimostra che la teoria dei giochi è vera: l'algorimo brevettato funziona su tutti i giochi di carte senza piatto.
+
 ![Napoli-Logo](https://github.com/user-attachments/assets/b0218b39-2d99-4ce0-8c43-ac42b512b710)
 
 ![made in parco grifeo](https://github.com/user-attachments/assets/483574bc-e34b-4560-9a95-b5267290a1a8)
