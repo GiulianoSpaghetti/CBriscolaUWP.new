@@ -56,8 +56,8 @@
                 <RowDefinition />
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Text="CBriscola versione 2.0" Grid.Row="0" Foreground="White"/>
-            <TextBlock Text="ⓒ 2023 Giulio Sorrentino some right reserved" Grid.Row="1" Foreground="White"/>
+            <TextBlock Text="CBriscola versione 2.1" Grid.Row="0" Foreground="White"/>
+            <TextBlock Text="ⓒ Giulio Sorrentino 2023-2025, some right reserved" Grid.Row="1" Foreground="White"/>
             <TextBlock Text="Licenza: GPL v3 o, secondo la tua opionione, qualsiasi versione successiva" Grid.Row="2" Foreground="White"/>
             <TextBlock x:Name="tbInfo" Text="Simulatore del gioco della briscola a due giocatori, senza multiplayer" Grid.Row="3" Foreground="White" />
                 <Button x:Name="btnInfo" Content="Maggiori Informazioni" Tapped="OnSito_Click" Grid.Row="4" Style="{ThemeResource CustomButtonStyle}" />

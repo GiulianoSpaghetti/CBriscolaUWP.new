@@ -10,7 +10,6 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Imaging;
 using org.altervista.numerone.framework;
-using Windows.System.Profile.SystemManufacturers;
 using Windows.UI.Popups;
 using System;
 using System.Globalization;
@@ -144,7 +143,7 @@ namespace CBriscolaUWP
             tbInfo.Text = resourceMap.GetValue("InfoApp", resourceContext).ValueAsString;
             btnInfo.Content = resourceMap.GetValue("MaggioriInfo", resourceContext).ValueAsString;
             Briscola.Source = briscola.GetImmagine();
-            if (!SystemSupportInfo.LocalDeviceInfo.SystemProductName.Contains("Surface") && !SystemSupportInfo.LocalDeviceInfo.SystemProductName.Contains("XBox"))
+            if (!App.piattaforma.Contains("Surface") && !App.piattaforma.Contains("Xbox"))
             {
                 d = new MessageDialog("Unsupported Platform");
                 d.Commands.Add(new UICommand("Exit", new UICommandInvokedHandler(exit)));
@@ -235,11 +234,13 @@ namespace CBriscolaUWP
             e = new ElaboratoreCarteBriscola(cartaBriscola);
             m = new Mazzo(e);
             briscola = Carta.GetCarta(ElaboratoreCarteBriscola.GetCartaBriscola());
-            if (partite % 2 == 1)
+            if (partite % 2 == 0)
             {
                 vecchiPuntiUtente = 0;
                 vecchiPuntiCPU = 0;
             }
+            g = new Giocatore(new GiocatoreHelperUtente(), g.GetNome(), 3);
+            cpu = new Giocatore(new GiocatoreHelperCpu2(ElaboratoreCarteBriscola.GetCartaBriscola()), cpu.GetNome(), 3);
             for (UInt16 i = 0; i < 3; i++)
             {
                 g.AddCarta(m);
@@ -400,7 +401,7 @@ namespace CBriscolaUWP
                     {
                         string s;
                         vecchiPuntiUtente += g.GetPunteggio();
-                        vecchiPuntiCPU += g.GetPunteggio();
+                        vecchiPuntiCPU += cpu.GetPunteggio();
                         if (vecchiPuntiUtente == vecchiPuntiCPU)
                             s = resourceMap.GetValue("PartitaPatta", resourceContext).ValueAsString;
                         else
@@ -492,7 +493,7 @@ namespace CBriscolaUWP
 
         private async void OnSito_Click(object sender, TappedRoutedEventArgs e)
         {
-            await Launcher.LaunchUriAsync(new Uri("https://github.com/numerunix/cbriscolauwp.new"));
+            await Launcher.LaunchUriAsync(new Uri("https://github.com/GiulianoSpaghetti/cbriscolauwp.new"));
         }
 
         public void Close(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
