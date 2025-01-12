@@ -45,6 +45,9 @@ Può essere usata per creare chioschi.
 
 
 ## Screenshot dell'app
+
+![Screenshot_2025-01-12_12-08-26](https://github.com/user-attachments/assets/3988503e-92c1-416e-8a15-d4de54beb147)
+
 ## Donazione
 
 http://numerone.altervista.org/donazioni.php
