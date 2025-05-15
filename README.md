@@ -1,5 +1,14 @@
 :it: Made in Italy. Il primo gioco indipendente (non indie) free software per la xbox.
 
+## ATTENZIONE
+
+Il progetto così come è funziona, solo che venite invitati a ricompilarlo su pc impostando il debug sulla prima linea del main, scoprendo come si chiama la variabile di sistema che contiene la mainwindow ed a impostarla a NULL.
+
+Il progetto viene dichiarato legacy, per il momento.
+Su windows c'è la briscola in maui o in material, mentre su xbox al momento non c'è soluzione, ma ci stanno lavorando.
+
+## Descrizione
+
 Questo gioco dimostra che la teoria dei giochi è vera: l'algorimo brevettato funziona su tutti i giochi di carte senza piatto.
 
 ![Napoli-Logo](https://github.com/user-attachments/assets/b0218b39-2d99-4ce0-8c43-ac42b512b710)
