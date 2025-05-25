@@ -23,23 +23,23 @@ namespace CBriscolaUWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private static Giocatore g, cpu, primo, secondo, temp;
-        private static Mazzo m;
-        private static Carta c, c1, briscola;
-        private static BitmapImage cartaCpu = new BitmapImage(new Uri("ms-appx:///Resources/retro carte pc.png"));
-        private static Image i, i1;
-        private static UInt16 secondi = 5, vecchiPuntiUtente=0, vecchiPuntiCPU=0;
-        private static UInt64 partite = 0;
-        private static TimeSpan delay;
-        private static bool avvisaTalloneFinito=true, briscolaDaPunti=false, primoutente = true;
+        private Giocatore g, cpu, primo, secondo, temp;
+        private Mazzo m;
+        private Carta c, c1, briscola;
+        private BitmapImage cartaCpu = new BitmapImage(new Uri("ms-appx:///Resources/retro carte pc.png"));
+        private Image i, i1;
+        private UInt16 secondi = 5, vecchiPuntiUtente=0, vecchiPuntiCPU=0;
+        private UInt64 partite = 0;
+        private TimeSpan delay;
+        private bool avvisaTalloneFinito=true, briscolaDaPunti=false, primoutente = true;
         ElaboratoreCarteBriscola e;
-        public static ResourceMap resourceMap;
-        public static ResourceContext resourceContext;
-        private static bool cartaBriscola = true;
+        public ResourceMap resourceMap;
+        public ResourceContext resourceContext;
+        private bool cartaBriscola = true;
         private Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings, container;
         private ThreadPoolTimer t;
         private MessageDialog d;
-
+        private Uri uri = new Uri("https://github.com/GiulianoSpaghetti/cbriscolauwp.new");
         public MainPage()
         {
             string s;
@@ -58,7 +58,14 @@ namespace CBriscolaUWP
             }
             this.InitializeComponent();
             delay = TimeSpan.FromSeconds(secondi);
-            container = localSettings.CreateContainer("CBriscola", Windows.Storage.ApplicationDataCreateDisposition.Always);
+            try
+            {
+                container = localSettings.CreateContainer("CBriscola", Windows.Storage.ApplicationDataCreateDisposition.Existing);
+            } catch (Exception ex)
+            {
+                container = localSettings.CreateContainer("CBriscola", Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+            }
             s = localSettings.Containers["CBriscola"].Values["briscolaDaPunti"] as string;
             if (s == null || s == "false")
                 briscolaDaPunti = false;
@@ -67,7 +74,7 @@ namespace CBriscolaUWP
 
             e = new ElaboratoreCarteBriscola(briscolaDaPunti);
             m = new Mazzo(e);
-            Carta.Inizializza(40, CartaHelperBriscola.GetIstanza(e), MainPage.GetLocalizedString("bastoni"), MainPage.GetLocalizedString("coppe"), MainPage.GetLocalizedString("denari"), MainPage.GetLocalizedString("spade"));
+            Carta.Inizializza(40, CartaHelperBriscola.GetIstanza(e), GetLocalizedString("bastoni"), GetLocalizedString("coppe"), GetLocalizedString("denari"), GetLocalizedString("spade"));
             s = localSettings.Containers["CBriscola"].Values["numeUtente"] as string;
             if (s == null)
                 s = "numerone";
@@ -221,7 +228,6 @@ namespace CBriscolaUWP
                 avvisaTalloneFinito = true;
                 localSettings.Containers["CBriscola"].Values["avvisaTalloneFinito"] = "true";
             }
-
         }
 
         private void OnOkFp_Click(object sender, TappedRoutedEventArgs evt)
@@ -311,7 +317,7 @@ namespace CBriscolaUWP
             img1.Visibility = Visibility.Collapsed;
             return img1;
         }
-        private static bool AggiungiCarte()
+        private bool AggiungiCarte()
         {
             try
             {
@@ -325,7 +331,7 @@ namespace CBriscolaUWP
             return true;
         }
 
-        public static string GetLocalizedString (string s)
+        public string GetLocalizedString (string s)
         {
             return resourceMap.GetValue(s, resourceContext).ValueAsString;
         }
@@ -493,7 +499,7 @@ namespace CBriscolaUWP
 
         private async void OnSito_Click(object sender, TappedRoutedEventArgs e)
         {
-            await Launcher.LaunchUriAsync(new Uri("https://github.com/GiulianoSpaghetti/cbriscolauwp.new"));
+            await Launcher.LaunchUriAsync(uri);
         }
 
         public void Close(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
