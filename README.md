@@ -1,5 +1,7 @@
 :it: Made in Italy. Il primo gioco indipendente (non indie) free software per la xbox.
 
+Il progetto è dedicato a Carmela, la badante di mia nonna paterna che prima di andarsene voleva presentarmi la mia attuale fidanzata.
+
 ## ATTENZIONE
 
 Il progetto così come è funziona, solo che venite invitati a ricompilarlo su pc impostando il debug sulla prima linea del main, scoprendo come si chiama la variabile di sistema che contiene la mainwindow ed a impostarla a NULL.
@@ -20,8 +22,6 @@ Questo gioco dimostra che la teoria dei giochi è vera: l'algorimo brevettato fu
 ## CBriscolaUWP per il windows store
 La cbriscola grafica in UWP, il falso vero Project Carmela.
 Quello che avete davanti non è il gioco della briscola come si intende oggi, perché oggi tutti i simulatori di briscola dicono "hai preso l'asso, bravo" e finisce lì. Quello che avete davanti è un simulatore equo e professionale, con punteggio aggiornato in tempo reale, in modo da poter decidere se "rischiare" o meno coscientemente. Sembra strano a dirsi, ma è Hard Core, perché si ha in ogni istante il potere di cambiare in ogni istante l'andamento della parita coscientemente con le proprie scelte.
-
-Il progetto è dedicato a Carmela, la badante di mia nonna paterna che prima di andarsene voleva presentarmi la mia attuale fidanzata.
 
 ## Come ricompilare
 Per prima cosa occorre ricompilare la libreria cardframework.uwp.
