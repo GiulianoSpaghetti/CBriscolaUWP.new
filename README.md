@@ -1,6 +1,6 @@
-:it: Made in Italy. Il primo gioco indipendente (non indie) free software per la xbox.
-
 Il progetto è dedicato a Carmela, la badante di mia nonna paterna che prima di andarsene voleva presentarmi la mia attuale fidanzata.
+
+:it: Made in Italy. Il primo gioco indipendente (non indie) free software per la xbox.
 
 ## ATTENZIONE
 
