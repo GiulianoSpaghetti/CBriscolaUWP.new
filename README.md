@@ -4,7 +4,7 @@ Il progetto è dedicato a Carmela, la badante di mia nonna paterna che prima di 
 
 ## ATTENZIONE
 
-come farsi spiegare il readme da gemini: https://g.co/gemini/share/e0d786fc8f22 , basta loggarsi con l'account Google.
+[Fatti spiegare il progetto da Gemini di google](https://gemini.google.com/share/6be443c983d3): basta loggarti col tuo account.
 
 Il progetto così come è funziona, solo che venite invitati a ricompilarlo su pc impostando il debug sulla prima linea del main, scoprendo come si chiama la variabile di sistema che contiene la mainwindow ed a impostarla a NULL.
 
