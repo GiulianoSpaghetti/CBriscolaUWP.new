@@ -38,7 +38,7 @@ Su Xbox, per cambiare linguaggio bisogna disinstallare e reinstallare l'applicat
 
 ## La soluzione più pulita
 
-So che microsoft cerca di pubblicarlo su qualche store, e puntualmente ricevono cracker e sono costretti a rimuovere l'app, però vi dico che l'account nion è soppresso, ma sospeso perché "loro devono tutelarsi", per cui vi dico di guardare la [pagina di allkeyshop](https://www.allkeyshop.com/blog/en-us/buy-cbriscola-xbox-one-compare-prices/) ed aspettare qualche codice che gli viene fornito stesso dalla microsoft.
+So che microsoft cerca di pubblicarlo su qualche store, e puntualmente ricevono cracker e sono costretti a rimuovere l'app, però vi dico che l'account non è soppresso, ma sospeso perché "loro devono tutelarsi", per cui vi dico di guardare la [pagina di allkeyshop](https://www.allkeyshop.com/blog/en-us/buy-cbriscola-xbox-one-compare-prices/) ed aspettare qualche codice che gli viene fornito stesso dalla microsoft.
 
 ## Come aprire un account da sviluppatore xbox
 
